@@ -1,0 +1,10 @@
+{
+    "reactjs": {
+        "level": "intermediate",
+        "capacity": 100
+    },
+    "angular": {
+        "level": "beginner",
+        "capacity": 40
+    }
+}
