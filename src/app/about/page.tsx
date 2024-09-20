@@ -11,6 +11,7 @@ export default function About() {
     return(
         <>
             <Navigation />
+            <div className="text-usual-100">
             <div className="h-[50vh] px-8 py-20 bg-cyan-700 flex flex-row justify-center items-center">
                 <h1 className="font-bold text-2xl">À propos</h1>
             </div>
@@ -69,6 +70,7 @@ export default function About() {
                     <SkillsContainer />
                 </div>
             </section>
+            </div>
         </>
     )
 }

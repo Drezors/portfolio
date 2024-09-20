@@ -32,7 +32,7 @@ export default async function ProjectDetails({ params }: { params: { slug: strin
         return(
             <>
                 <Navigation />
-                <div className="px-8 py-20">
+                <div className="px-8 py-20 text-usual-100">
                     <div className="flex flex-col gap-6">
                         <h1 className="text-xl font-bold">{project.name}</h1>
                         <div className="flex flex-row items-center gap-6">

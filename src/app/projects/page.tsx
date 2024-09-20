@@ -12,7 +12,7 @@ export default async function Projects() {
     return(
         <>
             <Navigation />
-            <div className="px-8 py-20 max-w-md md:max-w-2xl mx-auto">
+            <div className="px-8 py-20 max-w-md md:max-w-2xl mx-auto text-usual-100">
                 <div className="flex flex-col gap-4 items-center justify-center">
                     <div className="rounded-full px-2 py-1 border border-indigo-300 dark:border-indigo-600 bg-indigo-100 dark:bg-indigo-700 text-indigo-700 dark:text-indigo-300 flex flex-row items-center justify-between">
                         <span className="text-sm font-bold">Ceci est une liste non exhaustive</span>

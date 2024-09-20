@@ -13,7 +13,7 @@ export default function ProjectsGrid({projects} : ProjectsGridProps) {
     return(
         <AnimatePresence>
         // Petite animation de div avec framer-motion, attention il faut aboslument que lorsque tu as une animation ce soit un "use client"; sinon nextjs ne l'aimera pas. L'avantage ici c'est que tu es coté client, donc peut être y mettre ton filtre par technologie ici peut etre interessant avec un useState etc etc.
-        <div className="grid grid-cols-4 md:grid-cols-12 gap-x-4 gap-y-6">
+        <div className="grid grid-cols-4 md:grid-cols-12 gap-x-4 gap-y-6 text-usual-100">
             {projects.map((project) => 
             <motion.div initial={{opacity: 0, translateX: -100}} whileInView={{opacity: 1, translateX: 0}} transition={{type: "string", damping: 10, stiffness: 100}} className="col-span-4 bg-white dark:bg-slate-800 flex flex-col gap-4 justify-between w-full h-full border border-slate-100 dark:border-slate-300 shadow-sm p-4 rounded-xl">
             <div className="flex flex-col gap-4">

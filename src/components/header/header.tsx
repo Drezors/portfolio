@@ -1,13 +1,12 @@
 "use client";
 
-
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaX, FaFacebook, FaInstagram } from "react-icons/fa6";
 
 export default function Header() {
     return(
-        <header className="px-6 md:px-32 py-12 grid grid-cols-6 md:grid-cols-12 gap-y-12 gap-x-8 text-usual-100 bg-usual-950">
-            <div className="col-span-6 w-full md:w-4/5 flex flex-row gap-6">
+        <header className="px-6 md:px-32 py-12 grid grid-cols-6 md:grid-cols-12 gap-y-12 gap-x-8 text-usual-100 md:w-4/5">
+            <div className="col-span-6 w-full md:w-4/5 flex flex-row gap-6 items-center">
                 <div className="flex flex-col gap-4">
                     <div className="flex flex-col gap-2">
                         <span className="text-2xl md:text-4xl font-bold">Gonthier Thomas</span>
