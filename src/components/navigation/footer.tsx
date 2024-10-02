@@ -2,20 +2,12 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import React from "react";
 import { FaGithub, FaLinkedin, FaX, FaFacebook, FaInstagram } from "react-icons/fa6";
 
 export default function Footer() {
     return(
         <>
-        {/* <div className="w-full px-3 py-2 bg-usual-950 flex flex-row items-center gap-4 justify-between text-usual-50">
-            <span className="font-bold">Portfolio</span>
-            <nav className="w-fit mx-auto px-3 py-2 rounded-full bg-white dark:bg-slate-800 flex flex-row items-center gap-4">
-                <Link href="/" className="rounded-full px-2 py-1 bg-transparent hover:bg-indigo-100 dark:hover:bg-indigo-300 hover:text-indigo-700 flex items-center justify-center">Accueil</Link>
-                <Link href="/projects" className="rounded-full px-2 py-1 bg-transparent hover:bg-indigo-100 dark:hover:bg-indigo-300 hover:text-indigo-700 flex items-center justify-center">Projets</Link>
-                <Link href="/about" className="rounded-full px-2 py-1 bg-transparent hover:bg-indigo-100 dark:hover:bg-indigo-300 hover:text-indigo-700 flex items-center justify-center">A propos</Link>
-            </nav>
-            <span className="font-bold text-lg text-secondary-700">© 2024 All Rights Reserved by ThemeJunction</span>
-        </div> */}
         <div className="flex flex-col md:flex-row bg-usual-950 py-10 px-12 justify-between text-usual-50 w-full">
             <div className="flex flex-col p-1 gap-4 w-fit">
                 <Link href="#" className="hover:text-secondary-600 hover:underline">Mentions légales</Link>

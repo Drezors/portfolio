@@ -35,10 +35,10 @@ export default function RecentProjects({ projects }: RecentProjectsProps) {
     : allProjects.filter((item) => item.category === activeFilter);
 
   return (
-    <section className="px-6 md:px-32 py-12 flex flex-col gap-14 items-center text-usual-100 md:w-4/5">
+    <section className="px-6 md:px-32 py-12 flex flex-col gap-14 items-center md:w-4/5">
       {/* Barre de filtre */}
       <h2 className="col-span-6 md:col-span-12 text-3xl font-bold text-center">Mes projects récents</h2>
-      <div className="flex justify-center gap-4 p-2 w-fit bg-usual-900 rounded-full">
+      <div className="flex justify-center gap-4 p-2 w-fit bg-usual-900 rounded-full text-usual-50">
         <button
           className={`px-4 py-2 rounded-full ${activeFilter === "all" ? "bg-secondary-600 text-white" : "bg-transparent"}`}
           onClick={() => setActiveFilter("all")}

@@ -1,6 +1,7 @@
 import Navigation from "@/components/navigation/navigation";
 import ProjectsGrid from "@/components/projects/projects-grid";
 import { promises as fs } from "fs";
+import React from "react";
 
 export default async function Projects() {
     // Ici on récupère le projects.json directement depuis ton dossier (il n'est pas visible coté client heureusement)

@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,7 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        'bg': "url('/public/bg.svg')"
+        'bg_dark': "url('/public/bg_dark.svg')",
+        'bg_light': "url('/public/bg_light.svg')"
       },
     },
     colors: {

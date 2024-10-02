@@ -5,5 +5,5 @@ export type Project = {
     description: string
     technologies: string[]
     projectUrl: string
-    t: string
+    thumbnail: string
 }

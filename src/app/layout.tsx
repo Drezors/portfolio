@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} flex flex-col items-center mx-auto bg-[url('../../public/bg.svg')] bg-cover bg-no-repeat text-slate-950 dark:text-slate-50 min-h-screen w-full relative`}>{children}</body>
+      <body className={`${inter.className} flex flex-col items-center mx-auto bg-[url('../../public/bg_light.svg')] dark:bg-[url('../../public/bg_dark.svg')] bg-cover bg-no-repeat text-usual-950 dark:text-usual-100 min-h-screen w-full relative`}>{children}</body>
     </html>
   );
 }
