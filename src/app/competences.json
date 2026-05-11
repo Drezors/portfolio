@@ -6,11 +6,11 @@
     "proofs": [
       {
         "title": "Projet TousAuMarché - immersion terrain et compréhension des besoins métiers",
-        "content": "Dans le cadre de mon alternance sur le projet [TousAuMarché](https://www.tousaumarche.fr/), j’ai été impliqué dès les premières phases du projet, au moment où la solution était encore en cours de définition.\n\nAvec mon tuteur Julien, nous avons participé à plusieurs réunions avec différents acteurs du domaine des marchés (gestionnaires, organisateurs et interlocuteurs côté mairie). Ces échanges avaient pour objectif de comprendre les **processus existants** et les **difficultés rencontrées au quotidien**.\n\nLors de ces rendez-vous, les besoins exprimés étaient souvent **généraux** et **orientés métier** plutôt que techniques. Mon rôle consistait à :\n- écouter attentivement\n- prendre des notes\n- poser des questions de clarification\n- reformuler les besoins afin de valider leur compréhension\n\n\nPar exemple, la gestion des candidatures était initialement décrite comme un ensemble de tâches administratives dispersées. À travers les échanges, nous avons identifié qu’il s’agissait en réalité d’un besoin de **centralisation** et de **suivi structuré des demandes**.\n\nCette phase d’analyse a permis de mettre en évidence plusieurs problématiques clés :\n- gestion des candidatures\n- suivi des exposants\n- digitalisation des processus papier utilisés par les mairies\n\n\nLe résultat de cette démarche a été la transformation d’un système **manuel et fragmenté** en une vision plus **structurée et exploitable** pour le développement d’une application web."
+        "content": "Dans le cadre de mon alternance sur le projet [TousAuMarché](/projects/tousaumarche), j’ai été impliqué dès les premières phases du projet, au moment où la solution était encore en cours de définition.\n\nAvec mon tuteur Julien, nous avons participé à plusieurs réunions avec différents acteurs du domaine des marchés (gestionnaires, organisateurs et interlocuteurs côté mairie). Ces échanges avaient pour objectif de comprendre les **processus existants** et les **difficultés rencontrées au quotidien**.\n\nLors de ces rendez-vous, les besoins exprimés étaient souvent **généraux** et **orientés métier** plutôt que techniques. Mon rôle consistait à :\n- écouter attentivement\n- prendre des notes\n- poser des questions de clarification\n- reformuler les besoins afin de valider leur compréhension\n\n\nPar exemple, la gestion des candidatures était initialement décrite comme un ensemble de tâches administratives dispersées. À travers les échanges, nous avons identifié qu’il s’agissait en réalité d’un besoin de **centralisation** et de **suivi structuré des demandes**.\n\nCette phase d’analyse a permis de mettre en évidence plusieurs problématiques clés :\n- gestion des candidatures\n- suivi des exposants\n- digitalisation des processus papier utilisés par les mairies\n\n\nLe résultat de cette démarche a été la transformation d’un système **manuel et fragmenté** en une vision plus **structurée et exploitable** pour le développement d’une application web."
       },
       {
         "title": "Projet TousAuMarché - traduction des besoins en fonctionnalités produit",
-        "content": "Suite à la phase de compréhension des besoins sur le projet [TousAuMarché](https://www.tousaumarche.fr/), j’ai participé à la **structuration des besoins métiers** afin de les transformer en **fonctionnalités exploitables** pour le développement de la solution.\n\nCette étape s’inscrit dans la continuité directe des échanges avec les utilisateurs et les acteurs du domaine des marchés. Les besoins exprimés étant souvent formulés de manière **globale** ou **non technique**, un travail d’analyse et de reformulation a été nécessaire afin d’identifier les **véritables attentes fonctionnelles**.\n\nMon rôle consistait à transformer ces besoins en éléments structurés, directement exploitables par l’équipe de développement. Cela impliquait de **regrouper les informations recueillies**, d’identifier les **cas d’usage principaux** et de définir une **logique fonctionnelle cohérente**.\n\nPar exemple, le suivi des exposants a été analysé comme un besoin de **traçabilité complète des interactions administratives**. Cela a permis de le structurer autour d’un **historique des inscriptions**, des **statuts** et des **paiements associés**, afin d’assurer une meilleure visibilité et un suivi opérationnel clair.\n\nDe la même manière, la gestion des candidatures a été décomposée en un **cycle fonctionnel structuré** comprenant plusieurs étapes :\n- dépôt de dossier\n- analyse\n- validation\n- suivi administratif\n\nCette découpe a permis de clarifier le **flux métier** et de faciliter sa traduction en développement applicatif.\n\nCe travail de structuration a permis de passer d’une vision métier initialement globale à une **architecture fonctionnelle claire**, garantissant une meilleure adéquation entre les besoins utilisateurs et la solution développée."
+        "content": "Suite à la phase de compréhension des besoins sur le projet [TousAuMarché](/projects/tousaumarche), j’ai participé à la **structuration des besoins métiers** afin de les transformer en **fonctionnalités exploitables** pour le développement de la solution.\n\nCette étape s’inscrit dans la continuité directe des échanges avec les utilisateurs et les acteurs du domaine des marchés. Les besoins exprimés étant souvent formulés de manière **globale** ou **non technique**, un travail d’analyse et de reformulation a été nécessaire afin d’identifier les **véritables attentes fonctionnelles**.\n\nMon rôle consistait à transformer ces besoins en éléments structurés, directement exploitables par l’équipe de développement. Cela impliquait de **regrouper les informations recueillies**, d’identifier les **cas d’usage principaux** et de définir une **logique fonctionnelle cohérente**.\n\nPar exemple, le suivi des exposants a été analysé comme un besoin de **traçabilité complète des interactions administratives**. Cela a permis de le structurer autour d’un **historique des inscriptions**, des **statuts** et des **paiements associés**, afin d’assurer une meilleure visibilité et un suivi opérationnel clair.\n\nDe la même manière, la gestion des candidatures a été décomposée en un **cycle fonctionnel structuré** comprenant plusieurs étapes :\n- dépôt de dossier\n- analyse\n- validation\n- suivi administratif\n\nCette découpe a permis de clarifier le **flux métier** et de faciliter sa traduction en développement applicatif.\n\nCe travail de structuration a permis de passer d’une vision métier initialement globale à une **architecture fonctionnelle claire**, garantissant une meilleure adéquation entre les besoins utilisateurs et la solution développée."
       },
       {
         "title": "Projets freelance - compréhension client et cadrage fonctionnel",
@@ -19,6 +19,154 @@
     ],
     "autocritique": "Je considère cette compétence comme **solide et opérationnelle**, acquise et renforcée à travers mes expériences en alternance et en freelance. Elle est aujourd’hui directement mobilisée dans mes projets, notamment lors des phases amont de conception où la compréhension du besoin conditionne la qualité de la solution finale.\n\nJe ne la considère pas comme totalement maîtrisée dans tous les contextes, car elle dépend fortement de la diversité des interlocuteurs et de la complexité des projets. Certains besoins restent difficiles à formaliser lorsqu’ils sont mal exprimés ou lorsqu’il existe un écart important entre le langage métier et le langage technique.\n\nCette compétence occupe une place **prioritaire dans mon profil**, car elle intervient avant toute phase de développement. Une erreur d’analyse à ce niveau entraîne des conséquences sur l’ensemble du projet, ce qui en fait un point critique dans mon approche de conception logicielle.\n\nJ’ai observé une **montée en compétence rapide**, principalement grâce à mon immersion directe dans des contextes réels (clients, terrain, alternance). Cette exposition m’a permis de développer une capacité plus naturelle à reformuler et structurer des besoins parfois flous.\n\nAvec du recul, je considère que la principale difficulté de cette compétence ne réside pas dans l’écoute elle-même, mais dans la capacité à **formaliser de manière exploitable** des informations souvent implicites. Mon axe de progression est donc de renforcer cette formalisation, notamment via des méthodes plus structurées (spécifications fonctionnelles, user stories, découpage des besoins) afin de rendre le travail plus robuste et transmissible à une équipe technique.",
     "evolution": "À moyen terme, mon objectif est d’atteindre un niveau me permettant de prendre en charge de manière autonome la **phase complète de recueil et d’analyse des besoins** dans des projets plus complexes impliquant plusieurs parties prenantes.\n\nCela inclut la capacité à structurer des échanges avec des profils variés (utilisateurs finaux, décideurs métier, équipes techniques) afin de produire une vision claire et partagée du besoin avant toute phase de développement.\n\nJe souhaite également renforcer ma maîtrise des **méthodes de formalisation des besoins**, notamment à travers la rédaction de spécifications fonctionnelles plus standardisées (user stories, critères d’acceptation, découpage fonctionnel), afin de faciliter le travail en équipe et la transmission des informations.\n\nPour progresser sur cette compétence, je m’appuie principalement sur mon expérience terrain actuelle en alternance et freelance, ainsi que sur l’amélioration continue de ma capacité à structurer les échanges et à formaliser les besoins de manière plus rigoureuse. L’objectif est de passer d’une compréhension fonctionnelle correcte à une véritable capacité de **pilotage de la définition produit en amont du développement**.",
+    "links": [
+      "TousAuMarché"
+    ]
+  },
+  "relation-client": {
+    "title": "Relation client / support technique et accompagnement métier",
+    "type": "humaine",
+    "definition": "La relation client dans un contexte de développement logiciel ne se limite pas à répondre à des demandes. Elle consiste à assurer un rôle d’interface entre les utilisateurs métier et la solution technique, en garantissant la compréhension, le suivi et l’amélioration continue du produit.\n\nDans un environnement professionnel, cette compétence implique plusieurs dimensions :\n- l’accompagnement des utilisateurs dans l’usage de la plateforme\n- la collecte et la priorisation des retours terrain\n- la traduction des besoins fonctionnels en améliorations concrètes\n- la communication entre équipes techniques et acteurs métier\n\nElle joue un rôle central dans les projets en production, car elle permet d’assurer la cohérence entre la solution développée et les usages réels.",
+    "proofs": [
+      {
+        "title": "Projet TousAuMarché - support technique et accompagnement des utilisateurs",
+        "content": "Dans le cadre du projet [TousAuMarché](/projects/tousaumarche), j’ai occupé un rôle de support technique et d’intermédiaire direct avec les utilisateurs finaux (mairies et exposants).\n\nUne fois la plateforme mise en production, j’ai été amené à accompagner les utilisateurs dans la prise en main de l’outil et à répondre aux problématiques rencontrées au quotidien.\n\nConcrètement, mon rôle consistait à :\n- analyser les retours des utilisateurs\n- identifier s’il s’agissait d’un bug, d’un manque fonctionnel ou d’un problème d’utilisation\n- apporter une réponse rapide ou une solution de contournement\n- transmettre les améliorations pertinentes à intégrer dans la roadmap\n\nCe travail a permis d’assurer une continuité entre la production et les utilisateurs, en évitant une rupture entre les besoins terrain et la solution technique."
+      },
+      {
+        "title": "Projet TousAuMarché - amélioration continue basée sur les retours terrain",
+        "content": "Au fil de l’utilisation de la plateforme TousAuMarché, j’ai centralisé de nombreux retours provenant des gestionnaires de marchés et des mairies.\n\nCes retours concernaient principalement :\n- des difficultés d’utilisation de certaines interfaces\n- des demandes d’amélioration sur le suivi des candidatures\n- des besoins d’ajustement dans les processus administratifs\n\nMon rôle a été de transformer ces retours en améliorations concrètes du produit, en collaboration avec l’équipe technique.\n\nGrâce à cette démarche, la plateforme a pu évoluer progressivement sur une période d’un an, avec une adoption réelle par plusieurs mairies et plus de 100 candidatures traitées sur l’année 2025.\n\nCette amélioration continue a directement contribué à stabiliser et renforcer la qualité du produit en production."
+      }
+    ],
+    "autocritique": "Je considère cette compétence comme une découverte majeure dans mon parcours professionnel. Elle est aujourd’hui l’une des plus importantes dans mon profil, car elle me place directement au contact des utilisateurs finaux et des problématiques réelles.\n\nJ’ai rapidement pris goût à ce rôle d’intermédiaire entre technique et métier, notamment dans le contexte de TousAuMarché où j’étais en contact direct avec les mairies et les exposants.\n\nCette compétence demande une forte capacité d’écoute, de synthèse et de priorisation. Elle n’est pas uniquement technique : elle repose surtout sur la compréhension humaine des besoins.\n\nAvec du recul, je me rends compte que ma valeur ajoutée ne réside pas seulement dans le développement, mais dans ma capacité à faire le lien entre un besoin exprimé et une solution exploitable.\n\nJe considère que je progresse rapidement sur cet aspect, notamment grâce à l’exposition directe aux utilisateurs et à la diversité des situations rencontrées en production.",
+    "evolution": "À moyen terme, mon objectif est de renforcer ce rôle d’interface entre les utilisateurs et les équipes techniques pour devenir un point de référence sur la compréhension produit.\n\nJe souhaite évoluer vers une posture hybride entre développeur et product/tech lead orienté utilisateur, capable de :\n- structurer les retours utilisateurs\n- prioriser les besoins métier\n- traduire ces besoins en spécifications claires\n\nJe vais continuer à renforcer cette compétence via mon expérience terrain actuelle et par l’étude de méthodes de gestion produit et de support utilisateur.\n\nL’objectif est de devenir capable de piloter la compréhension et l’évolution d’un produit en production de manière autonome.",
+    "links": [
+      "TousAuMarché"
+    ]
+  },
+  "typescript": {
+    "title": "TypeScript / typage et robustesse applicative",
+    "type": "technique",
+    "definition": "TypeScript est un sur-ensemble de JavaScript qui introduit un système de typage statique. Il permet de renforcer la fiabilité du code, de réduire les erreurs à l’exécution et d’améliorer la maintenabilité des applications.\n\nDans un contexte professionnel, TypeScript est utilisé pour sécuriser les échanges de données, structurer les modèles métier et faciliter la collaboration au sein d’une équipe de développement.",
+    "proofs": [
+      {
+        "title": "Projet TousAuMarché - structuration des modèles métier",
+        "content": "Dans le projet [TousAuMarché](/projects/tousaumarche), j’ai utilisé TypeScript pour structurer l’ensemble des modèles métier liés aux candidatures, exposants et marchés.\n\nCela a permis de :\n- garantir la cohérence des données entre frontend et backend\n- sécuriser les échanges via des types stricts\n- éviter les erreurs liées aux données mal formées\n\nUn exemple concret est la modélisation des formulaires de candidature, où les types ont permis de contrôler les champs obligatoires et les formats attendus avant envoi vers l’API."
+      }
+    ],
+    "autocritique": "TypeScript est aujourd’hui une compétence maîtrisée et systématiquement utilisée dans mes projets. Elle est devenue une base indispensable dans mon workflow de développement.\n\nJe considère cependant que ma marge de progression se situe dans la conception de types plus avancés (génériques complexes, utilitaires avancés, patterns avancés de typage).",
+    "evolution": "À moyen terme, je souhaite approfondir les patterns avancés TypeScript afin de l’utiliser non seulement comme outil de sécurité, mais comme véritable outil de modélisation métier avancée.",
+    "links": [
+      "TousAuMarché"
+    ]
+  },
+  "nextjs-shadcn": {
+    "title": "Next.js / Shadcn UI - développement d’interfaces modernes",
+    "type": "technique",
+    "definition": "Next.js est un framework React permettant de développer des applications web performantes avec rendu serveur et génération statique. Shadcn UI est une bibliothèque de composants UI moderne basée sur Tailwind et Radix.\n\nCes outils permettent de construire des interfaces rapides, maintenables et orientées expérience utilisateur.",
+    "proofs": [
+      {
+        "title": "Projet TousAuMarché - développement de l’interface exposant et mairie",
+        "content": "Dans le projet [TousAuMarché](/projects/tousaumarche), j’ai conçu l’ensemble des interfaces utilisateur avec Next.js et Shadcn UI.\n\nJ’ai notamment développé :\n- l’espace exposant pour dépôt de candidature\n- l’espace mairie pour la gestion des dossiers\n- des formulaires complexes multi-étapes\n\nL’objectif était de transformer des processus administratifs complexes en interfaces simples et compréhensibles, tout en garantissant une bonne expérience utilisateur."
+      }
+    ],
+    "autocritique": "Je maîtrise bien l’écosystème Next.js et son intégration avec des librairies UI modernes comme Shadcn. J’ai une bonne capacité à structurer des interfaces complexes.\n\nMon axe de progression se situe sur l’optimisation avancée des performances et les patterns d’architecture front-end à grande échelle.",
+    "evolution": "À moyen terme, je souhaite approfondir les architectures avancées Next.js (server actions, streaming, optimisation des performances, design systems scalables).",
+    "links": [
+      "TousAuMarché"
+    ]
+  },
+  "aws-cloud": {
+    "title": "AWS / Amplify / Cognito / DynamoDB - architecture cloud applicative",
+    "type": "technique",
+    "definition": "AWS est une plateforme cloud proposant des services d’infrastructure, d’authentification et de bases de données. Amplify simplifie l’intégration backend/frontend, Cognito gère l’authentification, et DynamoDB est une base de données NoSQL scalable.\n\nCes outils permettent de construire des applications cloud sécurisées et scalables sans gérer directement l’infrastructure serveur.",
+    "proofs": [
+      {
+        "title": "Projet TousAuMarché - mise en place de l’authentification et backend cloud",
+        "content": "Dans le projet [TousAuMarché](/projects/tousaumarche), j’ai mis en place l’architecture cloud de l’application avec AWS.\n\nJ’ai notamment implémenté :\n- l’authentification via AWS Cognito\n- la gestion des utilisateurs exposants et mairies\n- la structuration des données avec DynamoDB\n- l’intégration via AWS Amplify dans le frontend Next.js\n\nCette base a permis de sécuriser l’accès à la plateforme et de poser une architecture scalable pour la gestion des candidatures."
+      }
+    ],
+    "autocritique": "Cette compétence est fonctionnelle et opérationnelle. Je suis capable de mettre en place une architecture complète AWS pour une application web.\n\nCependant, je reste encore dépendant de la documentation pour les cas avancés et les architectures complexes multi-services.",
+    "evolution": "Je souhaite monter en compétence sur les architectures cloud avancées (IAM, sécurité fine, event-driven architecture, scalabilité multi-services).",
+    "links": [
+      "TousAuMarché"
+    ]
+  },
+  "figma": {
+    "title": "Figma - conception d’interfaces et prototypage produit",
+    "type": "technique",
+    "definition": "Figma est un outil de conception d’interfaces permettant de créer des maquettes, prototypes interactifs et design systems. Il est utilisé pour structurer visuellement un produit avant son développement.\n\nDans un contexte professionnel, il permet de valider les parcours utilisateurs, d’aligner les équipes et de réduire les erreurs de conception.",
+    "proofs": [
+      {
+        "title": "Projet TousAuMarché - conception des interfaces avant développement",
+        "content": "Dans le cadre du projet [TousAuMarché](/projects/tousaumarche), j’ai réalisé l’ensemble des maquettes Figma avant la phase de développement.\n\nCes maquettes ont servi à :\n- valider les parcours utilisateurs\n- définir les interfaces des espaces exposants et mairie\n- anticiper la structure des formulaires complexes\n\nUne référence utilisée dans la conception a été l’expérience de plateformes comme Airbnb (flow type “host onboarding”) pour simplifier les parcours utilisateurs."
+      }
+    ],
+    "autocritique": "Figma est une compétence que j’utilise de manière efficace pour structurer des interfaces avant développement. Elle m’aide à éviter les erreurs de conception.\n\nJe dois encore progresser sur la formalisation de design systems complets et la cohérence globale des interfaces à grande échelle.",
+    "evolution": "À moyen terme, je souhaite renforcer ma capacité à concevoir des design systems complets et cohérents, intégrés directement dans les projets de développement.",
+    "links": [
+      "TousAuMarché"
+    ]
+  },
+  "autonomie": {
+    "title": "Autonomie dans la gestion de projet et le développement",
+    "type": "humaine",
+    "definition": "L’autonomie correspond à la capacité à organiser son travail, prendre des décisions techniques et avancer sur un projet sans supervision constante.\n\nDans un contexte professionnel, elle implique la gestion des priorités, la recherche de solutions techniques et la capacité à débloquer des problèmes de manière indépendante.",
+    "proofs": [
+      {
+        "title": "Projet TousAuMarché - prise en charge autonome de fonctionnalités complètes",
+        "content": "Dans le projet [TousAuMarché](/projects/tousaumarche), j’ai été chargé de développer plusieurs fonctionnalités de bout en bout sans encadrement direct constant.\n\nCela incluait notamment :\n- la mise en place de l’authentification avec AWS Cognito\n- le développement du formulaire de candidature exposant\n- la structuration des données métier côté frontend et backend\n\nJ’ai dû rechercher, expérimenter et implémenter les solutions de manière autonome en m’appuyant sur la documentation et les contraintes du projet."
+      }
+    ],
+    "autocritique": "Je suis aujourd’hui capable de gérer des fonctionnalités complètes en autonomie. C’est une de mes forces principales.\n\nMon principal axe de progression est de mieux anticiper les impacts globaux de mes décisions techniques sur l’architecture du projet.",
+    "evolution": "Je souhaite renforcer mon autonomie sur des projets plus complexes impliquant plusieurs services et contraintes d’architecture avancée.",
+    "links": [
+      "TousAuMarché"
+    ]
+  },
+  "travail-equipe": {
+    "title": "Travail d’équipe et collaboration en environnement projet",
+    "type": "humaine",
+    "definition": "Le travail d’équipe consiste à collaborer avec différents profils (développeurs, métiers, clients) afin de construire une solution cohérente.\n\nIl implique la communication, la coordination et la capacité à intégrer des retours dans un processus collectif.",
+    "proofs": [
+      {
+        "title": "Projet TousAuMarché - collaboration avec tuteur et acteurs métier",
+        "content": "Sur le projet [TousAuMarché](/projects/tousaumarche), j’ai travaillé en collaboration directe avec mon tuteur ainsi qu’avec les gestionnaires de marchés et représentants de mairies.\n\nCette collaboration incluait :\n- des réunions de cadrage\n- des échanges réguliers sur les besoins fonctionnels\n- la prise en compte des retours dans les évolutions produit\n\nJ’ai également travaillé avec les utilisateurs finaux pour ajuster les fonctionnalités en fonction des usages réels."
+      }
+    ],
+    "autocritique": "Je suis à l’aise dans les environnements collaboratifs et je sais adapter mon discours selon les interlocuteurs.\n\nJe dois encore progresser sur la formalisation écrite des décisions d’équipe pour éviter toute ambiguïté.",
+    "evolution": "Je vise une meilleure capacité à travailler dans des équipes plus larges avec des processus de développement plus structurés (agile, sprint, etc.).",
+    "links": [
+      "TousAuMarché"
+    ]
+  },
+  "polyvalence": {
+    "title": "Polyvalence technique et fonctionnelle sur un projet complet",
+    "type": "humaine",
+    "definition": "La polyvalence correspond à la capacité à intervenir sur plusieurs aspects d’un projet : analyse, conception, développement, support et amélioration continue.\n\nElle permet d’avoir une vision globale du produit et de s’adapter aux besoins du projet.",
+    "proofs": [
+      {
+        "title": "Projet TousAuMarché - intervention sur l’ensemble du cycle produit",
+        "content": "Dans le projet [TousAuMarché](/projects/tousaumarche), j’ai été impliqué sur plusieurs niveaux :\n- analyse des besoins métier\n- conception des interfaces (Figma)\n- développement frontend (Next.js, Shadcn)\n- backend et cloud (AWS, Cognito, DynamoDB)\n- support utilisateur et amélioration continue\n\nCette polyvalence m’a permis de comprendre le produit dans son ensemble et d’assurer une cohérence entre les différentes couches techniques et fonctionnelles."
+      }
+    ],
+    "autocritique": "Ma polyvalence est une force réelle car elle me permet de comprendre un projet de bout en bout.\n\nLe risque associé est de manquer de spécialisation profonde sur certains sujets très avancés.",
+    "evolution": "Je souhaite conserver cette polyvalence tout en renforçant un axe d’expertise plus profond sur l’architecture et le produit.",
+    "links": [
+      "TousAuMarché"
+    ]
+  },
+  "gestion-temps": {
+    "title": "Gestion du temps et organisation en contexte projet",
+    "type": "humaine",
+    "definition": "La gestion du temps consiste à organiser ses tâches, prioriser les actions et respecter les délais dans un contexte de développement ou de production.\n\nElle est essentielle dans les projets où plusieurs fonctionnalités évoluent en parallèle et où les priorités changent régulièrement.",
+    "proofs": [
+      {
+        "title": "Projet TousAuMarché - gestion des priorités et livraisons en production",
+        "content": "Dans le projet [TousAuMarché](/projects/tousaumarche), j’ai dû gérer plusieurs tâches en parallèle :\n- développement de nouvelles fonctionnalités\n- correction de bugs en production\n- intégration des retours utilisateurs\n\nJ’ai appris à prioriser les tâches en fonction de leur impact utilisateur et de leur urgence, notamment lors de la phase de mise en production où les retours étaient fréquents."
+      }
+    ],
+    "autocritique": "Je suis capable de gérer plusieurs tâches en parallèle dans un contexte réel de production.\n\nMon axe d’amélioration est de mieux anticiper les charges de travail et d’éviter les périodes de surcharge.",
+    "evolution": "Je souhaite renforcer ma capacité à planifier des projets plus longs et à mieux structurer mon temps sur des cycles de développement plus complexes.",
     "links": [
       "TousAuMarché"
     ]

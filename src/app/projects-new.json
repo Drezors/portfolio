@@ -20,5 +20,79 @@
       }
     ],
     "thumbnail": "/thumbnail-tousaumarche.png"
+  },
+  "scan-and-share": {
+    "slug": "scan-and-share",
+    "name": "Scan & Share",
+    "introduction": "**Scan & Share** est une application mobile personnelle de création de collection de produits via scan de code-barres.\n\nL’objectif du projet est de permettre à un utilisateur de scanner un produit, de récupérer ses informations via une API (Open Food Facts), puis de l’ajouter à une collection personnelle.\n\nCe projet a été réalisé dans une démarche d’apprentissage et d’expérimentation autour du développement mobile, notamment avec Kotlin et les services Firebase.",
+    "context": "Ce projet est un projet personnel développé en autonomie dans un objectif d’apprentissage du développement Android.\n\nIl s’inscrit dans une démarche d’exploration technique visant à découvrir l’écosystème Kotlin, la gestion de base de données mobile et l’intégration d’API externes.\n\nL’idée principale était de construire une application fonctionnelle de bout en bout, depuis la conception UX jusqu’au développement et à la mise en version testable.",
+    "steps": "## 1. Idéation et conception\n\nLe projet Scan & Share est né d’une volonté personnelle d’explorer le développement mobile Android tout en construisant une application utile.\n\nJ’ai commencé par définir les fonctionnalités principales :\n- scan de code-barres produit\n- récupération des données produit via API\n- création de collections personnelles\n\n## 2. Maquettage (Figma)\n\nAvant le développement, j’ai réalisé des maquettes sur Figma afin de définir l’interface utilisateur et les parcours de navigation.\n\nCette étape m’a permis de structurer l’application et d’anticiper les écrans principaux : accueil, scan, fiche produit et collection.\n\n## 3. Développement Android (Kotlin)\n\nJ’ai développé l’application en Kotlin de manière autonome.\n\nLes principales fonctionnalités implémentées :\n- intégration du scanner de code-barres\n- appel à l’API Open Food Facts pour récupérer les informations produits\n- gestion des collections utilisateurs\n\n## 4. Backend et persistance (Firebase)\n\nJ’ai utilisé Firebase pour gérer la persistance des données utilisateur et la synchronisation des collections.\n\nCela inclut :\n- stockage des collections\n- gestion des données utilisateurs\n\n## 5. Version testable\n\nL’application est aujourd’hui fonctionnelle et testable en dehors des stores.\nElle est utilisée comme base d’expérimentation et de test utilisateur.\n\n## 6. Refonte en cours\n\nJe travaille actuellement sur une refonte complète de l’interface afin d’améliorer l’expérience utilisateur et la cohérence visuelle de l’application.",
+    "actors": "Ce projet est entièrement réalisé en autonomie.\n\nJe suis le seul développeur et porteur du projet, ce qui m’a permis de gérer l’ensemble du cycle produit : conception, développement, test et amélioration.",
+    "results": "Le projet a permis la création d’une application mobile fonctionnelle permettant de scanner des produits et de les organiser en collections personnelles.\n\nIl constitue une première expérience complète de développement Android en autonomie.\n\nUne version testable est aujourd’hui disponible et utilisée comme base de travail pour les évolutions futures.",
+    "future": "Le projet est en cours de refonte graphique.\n\nLes prochaines étapes incluent :\n- amélioration de l’UI/UX\n- optimisation des performances\n- préparation à une publication sur les stores Android\n\nL’objectif est de transformer ce projet personnel en application publiable et stable.",
+    "critique": "Ce projet m’a permis de découvrir le développement mobile Android de manière concrète et autonome.\n\nJ’ai appris à gérer un projet complet sans encadrement, ce qui m’a forcé à résoudre des problèmes techniques de manière indépendante.\n\nLa principale limite actuelle du projet réside dans son architecture et son design initial, que je suis en train de refondre pour améliorer la qualité globale de l’application.\n\nAvec du recul, ce projet représente surtout une étape d’apprentissage technique plus qu’un produit finalisé, mais il constitue une base solide pour des projets mobiles plus avancés.",
+    "technologies": [
+      "Kotlin",
+      "Firebase",
+      "Open Food Facts API",
+      "Figma"
+    ],
+    "competencies": [
+      {
+        "name": "Autonomie",
+        "slug": "autonomie"
+      },
+      {
+        "name": "Next Step : développement mobile",
+        "slug": "mobile"
+      }
+    ],
+    "thumbnail": "/mobile/scan&share.png"
+  },
+  "portfolio": {
+    "slug": "portfolio",
+    "name": "Portfolio",
+    "title": "Portfolio",
+    "type": "technique",
+    "introduction": "Portfolio est une application web fullstack de portfolio professionnel conçue pour présenter mon profil d’Expert en Ingénierie du Logiciel.\n\nL’objectif n’est pas de produire un simple CV en ligne, mais une démonstration concrète de mes compétences à travers un produit réel, structuré et navigable.\n\nLe projet met en avant mes compétences techniques (Next.js, TypeScript, architecture fullstack, base de données Neon) ainsi que mes compétences non techniques (structuration de contenu, autonomie, gestion de projet, rédaction professionnelle).\n\nCe portfolio est également un projet de fin d’études construit seul, sans cahier des charges externe, en suivant une grille d’évaluation stricte servant de référence de validation.",
+    "definition": "Portfolio est une application web fullstack de portfolio professionnel conçue pour démontrer mes compétences en ingénierie logicielle.\n\nContrairement à un CV classique, il s’agit d’un produit vivant qui expose à la fois mes compétences techniques et mes compétences humaines à travers une structure navigable et des contenus détaillés.\n\nLe projet a été réalisé en autonomie complète dans un contexte de fin d’études, avec une grille d’évaluation comme cahier des charges.",
+    "context": "Le projet s’inscrit dans un contexte de fin d’études où le portfolio sert à la fois de livrable académique et de vitrine professionnelle.\n\nL’enjeu principal est de produire un objet cohérent, capable de démontrer par sa structure même les compétences qu’il prétend présenter : qualité du code, UX, architecture et rigueur du contenu.\n\nLe projet impose également une forte densité de contenu avec plusieurs compétences, réalisations et une navigation circulaire complète.",
+    "steps": "## 1. Analyse de la grille et conception fonctionnelle\n\nTransformation de chaque exigence de la grille en fonctionnalité concrète : pages, navigation circulaire, menu global, structure du contenu.\n\n## 2. Architecture technique\n\nChoix de Next.js, TypeScript et Tailwind CSS pour une application fullstack moderne, combinant rendu serveur et client.\n\nIntégration de Neon pour la gestion des données dynamiques.\n\n## 3. Modélisation des données\n\nMise en place d’un modèle relationnel entre compétences et réalisations pour permettre une navigation bidirectionnelle.\n\n## 4. Développement de l’interface\n\nCréation des composants globaux (menu, layout, pages dynamiques) et développement d’une interface responsive mobile-first.\n\n## 5. Production de contenu\n\nRédaction structurée de toutes les compétences, réalisations et du parcours selon un format imposé (définition, preuves, autocritique, évolution).\n\n## 6. Tests et optimisation\n\nValidation de la navigation, du responsive design et correction globale du contenu.",
+    "actors": "Projet réalisé en autonomie totale.\n\nJe suis à la fois concepteur, développeur et rédacteur du contenu.\n\nLe projet répond à une grille académique mais vise également un usage professionnel réel.",
+    "results": "Le portfolio couvre l’ensemble des exigences fonctionnelles et structurelles :\n- pages compétences et réalisations\n- navigation circulaire\n- contenu structuré et détaillé\n- application fullstack responsive\n\nIl démontre une capacité à concevoir et livrer une application complète de bout en bout.",
+    "future": "Le portfolio est un produit vivant destiné à évoluer en continu.\n\nIl intégrera de nouveaux projets, compétences et expériences professionnelles au fil du temps.\n\nIl constitue le socle central de ma présence professionnelle en ligne.",
+    "critique": "Le principal défi a été le perfectionnisme, notamment sur la structuration du contenu.\n\nLe choix d’une stack moderne a ajouté une complexité technique volontaire mais formatrice.\n\nCertaines parties auraient pu être simplifiées pour gagner en vitesse d’exécution, mais cela aurait réduit la qualité globale du produit final.",
+    "technologies": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Neon"
+    ],
+    "competencies": [
+      {
+        "name": "Analyse des besoins",
+        "slug": "analyse-besoins"
+      },
+      {
+        "name": "Autonomie",
+        "slug": "autonomie"
+      },
+      {
+        "name": "Next.js / Frontend",
+        "slug": "nextjs"
+      },
+      {
+        "name": "Architecture fullstack",
+        "slug": "architecture"
+      },
+      {
+        "name": "Rédaction technique",
+        "slug": "redaction"
+      }
+    ],
+    "links": [
+      "portfolio"
+    ],
+    "thumbnail": "/thumbnail-portfolio.png"
   }
 }

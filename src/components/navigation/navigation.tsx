@@ -79,29 +79,85 @@ export default function Navigation() {
             <Link href='/projects/tousaumarche' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
               TousAuMarché
             </Link>
+
+            <Link href='/projects/scan-and-share' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
+              Scan & Share
+            </Link>
+
+            <Link href='/projects/portfolio' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
+              Portfolio
+            </Link>
           </div>
         </div>
 
-        {/* DROPDOWN */}
+        {/* DROPDOWN COMPETENCES */}
         <div className='relative group'>
           {/* bouton principal */}
           <Link href='/competences' className='px-2 py-1 rounded-full hover:bg-indigo-100 dark:hover:bg-indigo-300 hover:text-indigo-700'>
             Compétences ▾
           </Link>
 
-          {/* dropdown */}
-          <div className='absolute top-10 left-0 w-64 bg-white dark:bg-slate-900 shadow-lg rounded-xl p-2 flex flex-col gap-1 border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition'>
-            <Link href='/competences/analyse-besoins' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-              Analyse des besoins
-            </Link>
+          {/* LEVEL 1 */}
+          <div className='absolute left-0 w-72 bg-white dark:bg-slate-900 shadow-lg rounded-xl p-2 flex flex-col gap-1 border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition'>
+            {/* TECHNIQUE */}
+            <div className='group/tech relative'>
+              <div className='px-3 py-2 rounded-lg flex justify-between items-center hover:bg-indigo-50 dark:hover:bg-slate-800 cursor-pointer'>
+                Techniques
+                <span>›</span>
+              </div>
 
-            <Link href='/competences/structuration' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-              Structuration métier
-            </Link>
+              <div className='absolute left-full top-0 ml-2 w-72 bg-white dark:bg-slate-900 shadow-lg rounded-xl p-2 border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover/tech:opacity-100 group-hover/tech:visible transition flex flex-col gap-1'>
+                <Link href='/competences/typescript' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
+                  TypeScript
+                </Link>
 
-            <Link href='/competences/freelance' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-              Relation client
-            </Link>
+                <Link href='/competences/nextjs-shadcn' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
+                  Next.js / Shadcn
+                </Link>
+
+                <Link href='/competences/aws-cloud' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
+                  AWS / Cloud
+                </Link>
+
+                <Link href='/competences/figma' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
+                  Figma
+                </Link>
+              </div>
+            </div>
+
+            {/* HUMAIN */}
+            <div className='group/human relative'>
+              <div className='px-3 py-2 rounded-lg flex justify-between items-center hover:bg-indigo-50 dark:hover:bg-slate-800 cursor-pointer'>
+                Humaines
+                <span>›</span>
+              </div>
+
+              <div className='absolute left-full top-0 ml-2 w-72 bg-white dark:bg-slate-900 shadow-lg rounded-xl p-2 border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover/human:opacity-100 group-hover/human:visible transition flex flex-col gap-1'>
+                <Link href='/competences/analyse-besoins' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
+                  Analyse des besoins
+                </Link>
+
+                <Link href='/competences/relation-client' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
+                  Relation client
+                </Link>
+
+                <Link href='/competences/autonomie' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
+                  Autonomie
+                </Link>
+
+                <Link href='/competences/travail-equipe' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
+                  Travail d’équipe
+                </Link>
+
+                <Link href='/competences/polyvalence' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
+                  Polyvalence
+                </Link>
+
+                <Link href='/competences/gestion-temps' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
+                  Gestion du temps
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
 
