@@ -1,92 +1,154 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useState } from "react";
-import { FaPhone, FaEnvelope, FaLocationPin } from "react-icons/fa6";
+import { motion } from 'framer-motion';
+import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { useState } from 'react';
 
-export default function Header() {
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 
-    const [formData, setFormData] = useState({
-        firstname: '',
-        lastname: '',
-        email: '',
-        phoneNumber: '',
-        message: '',
-      });
-    
-      const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prevData => ({ ...prevData, [name]: value }));
-      };
-    
-      const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        // Logique d'envoi du formulaire ici
-        console.log(formData);
-      };
-      
-    return(
-        <section className="px-6 md:px-32 py-12 grid grid-cols-6 md:grid-cols-12 gap-16 items-center">
-            <div className="col-span-6 flex flex-col p-8 md:p-14 bg-usual-400 dark:bg-usual-950 rounded-2xl gap-6 order-2 md:order-1">
-                <h2 className="text-3xl font-bold">Let's work together</h2>
-                <p>I design and code beautifully simple things and i love what i do. Just simple like that!</p>
-                <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-                    <div className="flex flex-col md:flex-row gap-6 w-full">
-                        <div className="flex flex-col gap-2 w-full">
-                            <input className="px-4 py-2.5 rounded-lg border text-usual-100 border-usual-200 dark:border-usual-700 bg-usual-950 dark:bg-usual-900 flex flex-row gap-2 items-center w-full" type="text" name="" id="" placeholder="Firstname" />
-                            {/* <span></span> Error Message*/}
-                        </div>
-                        <div className="flex flex-col gap-2 w-full">
-                            <input className="px-4 py-2.5 rounded-lg text-usual-100 border border-usual-200 dark:border-usual-700 bg-usual-950 dark:bg-usual-900 flex flex-row gap-2 items-center w-full" type="text" name="" id="" placeholder="Lastname" />
-                            {/* <span></span> Error Message*/}
-                        </div>
-                    </div>
-                    <div className="flex flex-col md:flex-row gap-6 w-full">
-                        <div className="flex flex-col gap-2 w-full">
-                            <input className="px-4 py-2.5 rounded-lg text-usual-100 border border-usual-200 dark:border-usual-700 bg-usual-950 dark:bg-usual-900 flex flex-row gap-2 items-center w-full" type="text" name="" id="" placeholder="Email" />
-                            {/* <span></span> Error Message*/}
-                        </div>
-                        <div className="flex flex-col gap-2 w-full">
-                            <input className="px-4 py-2.5 rounded-lg text-usual-100 border border-usual-200 dark:border-usual-700 bg-usual-950 dark:bg-usual-900 flex flex-row gap-2 items-center w-full" type="text" name="" id="" placeholder="Phone" />
-                            {/* <span></span> Error Message*/}
-                        </div>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <input className="px-4 py-2.5 rounded-lg text-usual-100 border border-usual-200 dark:border-usual-700 bg-usual-950 dark:bg-usual-900 flex flex-row gap-2 items-center w-full" type="text" name="" id="" placeholder="Message" />
-                        {/* <span></span> Error Message*/}
-                    </div>
-                    <button type="submit" className="bg-gradient-to-br from-primary-500 to-primary-200 hover:from-primary-400 hover:to-secondary-500 text-usual-50 rounded-full w-fit px-4 py-2">Envoyer ma demande</button>
-                </form>
-            </div>
-            <div className="col-span-6 flex flex-col gap-8 order-1 md:order-2 items-center">
-                <div className="flex flex-row gap-4 md:gap-8 items-center cursor-not-allowed">
-                    <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className="p-4 bg-gradient-to-br from-primary-500 to-primary-200 hover:from-primary-400 hover:to-secondary-500 text-usual-50 rounded-full">
-                        <FaPhone className="h-6 w-6"/>
-                    </motion.div>
-                    <div className="flex flex-col gap-2">
-                        <p>Phone</p>
-                        <span className="font-bold">Pas au premier rendez-vous :D</span>
-                    </div>
+export default function ContactSection() {
+  const [formData, setFormData] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    console.log(formData);
+  };
+
+  return (
+    <section className='px-6 md:px-16 lg:px-24 py-24'>
+      <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 items-start'>
+        {/* LEFT */}
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className='lg:col-span-5 flex flex-col gap-10'>
+          <div className='flex flex-col gap-5'>
+            <span className='uppercase tracking-[0.3em] text-sm text-gray-500'>Contact</span>
+
+            <h2 className='text-4xl md:text-5xl font-bold leading-tight'>Construisons quelque chose d’utile.</h2>
+
+            <p className='text-lg text-gray-600 dark:text-gray-300 leading-relaxed'>Je conçois des applications web et mobiles orientées produit, maintenables et pensées pour les utilisateurs réels.</p>
+          </div>
+
+          {/* CONTACT INFOS */}
+          <div className='flex flex-col gap-5'>
+            <Card className='p-5 rounded-2xl border'>
+              <div className='flex items-center gap-4'>
+                <div className='p-3 rounded-xl bg-muted'>
+                  <Mail className='w-5 h-5' />
                 </div>
-                <div className="flex flex-row gap-4 md:gap-8 items-center cursor-pointer" onClick={() => window.location.href = "mailto:pro.thomasgonthier@gmail.com"}>
-                    <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className="p-4 bg-gradient-to-br from-primary-500 to-primary-200 hover:from-primary-400 hover:to-secondary-500 text-usual-50 rounded-full">
-                        <FaEnvelope className="h-6 w-6"/>
-                    </motion.div>
-                    <div className="flex flex-col gap-2">
-                        <p>Email</p>
-                        <span className="font-bold">pro.thomasgonthier@gmail.com</span>
-                    </div>
+
+                <div className='flex flex-col'>
+                  <span className='text-sm text-muted-foreground'>Email</span>
+
+                  <a href='mailto:pro.thomasgonthier@gmail.com' className='font-medium hover:underline'>
+                    pro.thomasgonthier@gmail.com
+                  </a>
                 </div>
-                <div className="flex flex-row gap-4 md:gap-8 items-center cursor-not-allowed">
-                    <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className="p-4 bg-gradient-to-br from-primary-500 to-primary-200 hover:from-primary-400 hover:to-secondary-500 text-usual-50 rounded-full">
-                        <FaLocationPin className="h-6 w-6"/>
-                    </motion.div>
-                    <div className="flex flex-col gap-2">
-                        <p>Address</p>
-                        <span className="font-bold">C'est un secret ;D</span>
-                    </div>
+              </div>
+            </Card>
+
+            <Card className='p-5 rounded-2xl border opacity-70'>
+              <div className='flex items-center gap-4'>
+                <div className='p-3 rounded-xl bg-muted'>
+                  <Phone className='w-5 h-5' />
                 </div>
-            </div>
-        </section>
-    );
+
+                <div className='flex flex-col'>
+                  <span className='text-sm text-muted-foreground'>Téléphone</span>
+
+                  <span className='font-medium'>Disponible après premier échange</span>
+                </div>
+              </div>
+            </Card>
+
+            <Card className='p-5 rounded-2xl border opacity-70'>
+              <div className='flex items-center gap-4'>
+                <div className='p-3 rounded-xl bg-muted'>
+                  <MapPin className='w-5 h-5' />
+                </div>
+
+                <div className='flex flex-col'>
+                  <span className='text-sm text-muted-foreground'>Localisation</span>
+
+                  <span className='font-medium'>Toulouse / Remote</span>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </motion.div>
+
+        {/* RIGHT */}
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} viewport={{ once: true }} className='lg:col-span-7'>
+          <Card className='p-8 md:p-10 rounded-3xl border'>
+            <form onSubmit={handleSubmit} className='flex flex-col gap-8'>
+              {/* ROW */}
+              <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                <div className='flex flex-col gap-2'>
+                  <Label>Prénom</Label>
+
+                  <Input name='firstname' value={formData.firstname} onChange={handleChange} placeholder='Thomas' />
+                </div>
+
+                <div className='flex flex-col gap-2'>
+                  <Label>Nom</Label>
+
+                  <Input name='lastname' value={formData.lastname} onChange={handleChange} placeholder='Gonthier' />
+                </div>
+              </div>
+
+              {/* ROW */}
+              <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                <div className='flex flex-col gap-2'>
+                  <Label>Email</Label>
+
+                  <Input type='email' name='email' value={formData.email} onChange={handleChange} placeholder='vous@entreprise.com' />
+                </div>
+
+                <div className='flex flex-col gap-2'>
+                  <Label>Téléphone</Label>
+
+                  <Input name='phone' value={formData.phone} onChange={handleChange} placeholder='+33 6 00 00 00 00' />
+                </div>
+              </div>
+
+              {/* MESSAGE */}
+              <div className='flex flex-col gap-2'>
+                <Label>Votre besoin</Label>
+
+                <Textarea name='message' value={formData.message} onChange={handleChange} placeholder='Parlez-moi de votre projet, besoin ou problématique.' className='min-h-[180px] resize-none' />
+              </div>
+
+              {/* CTA */}
+              <div className='flex items-center justify-between gap-4 flex-col md:flex-row'>
+                <p className='text-sm text-muted-foreground'>Réponse généralement sous 24 à 48h.</p>
+
+                <Button type='submit' size='lg' className='rounded-xl gap-2'>
+                  Envoyer le message
+                  <Send className='w-4 h-4' />
+                </Button>
+              </div>
+            </form>
+          </Card>
+        </motion.div>
+      </div>
+    </section>
+  );
 }

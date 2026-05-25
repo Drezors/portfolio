@@ -1,176 +1,129 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+
+const projects = [
+  { slug: 'tousaumarche', name: 'TousAuMarché' },
+  { slug: 'scan-and-share', name: 'Scan & Share' },
+  { slug: 'portfolio', name: 'Portfolio' },
+  { slug: 'uptera', name: 'Uptera' },
+  { slug: 'e-fusion', name: 'E-Fusion' },
+];
+
+const techSkills = [
+  { slug: 'typescript', name: 'TypeScript' },
+  { slug: 'nextjs-shadcn', name: 'Next.js / Shadcn' },
+  { slug: 'aws-cloud', name: 'AWS / Cloud' },
+  { slug: 'figma', name: 'Figma' },
+];
+
+const humanSkills = [
+  { slug: 'analyse-besoins', name: 'Analyse des besoins' },
+  { slug: 'relation-client', name: 'Relation client' },
+  { slug: 'autonomie', name: 'Autonomie' },
+  { slug: 'travail-equipe', name: 'Travail d’équipe' },
+  { slug: 'polyvalence', name: 'Polyvalence' },
+  { slug: 'gestion-temps', name: 'Gestion du temps' },
+];
 
 export default function Navigation() {
-  const [theme, setTheme] = useState('dark');
-  const [open, setOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem('theme');
+    const stored = localStorage.getItem('theme') as 'light' | 'dark' | null;
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    if (storedTheme) {
-      setTheme(storedTheme);
-      document.documentElement.className = storedTheme === 'dark' ? 'dark' : '';
-    } else if (prefersDark) {
-      setTheme('dark');
-      document.documentElement.className = 'dark';
-    } else {
-      setTheme('light');
-      document.documentElement.className = '';
-    }
-  }, []);
+    const initial = stored ?? (prefersDark ? 'dark' : 'light');
 
-  // close dropdown on outside click
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    setTheme(initial);
+    document.documentElement.classList.toggle('dark', initial === 'dark');
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', newTheme);
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    document.documentElement.classList.toggle('dark', next === 'dark');
+    localStorage.setItem('theme', next);
   };
 
-  const [projects, setProjects] = useState<any[]>([]);
-
-  useEffect(() => {
-    fetch('/projects-new.json')
-      .then((res) => res.json())
-      .then((data) => {
-        const list = Object.values(data).map((p: any) => ({
-          slug: p.slug,
-          name: p.name,
-        }));
-        setProjects(list);
-      });
-  }, []);
-
   return (
-    <div className='sticky top-0 z-50 w-full mt-2 px-3 py-2 rounded-full bg-white/80 dark:bg-slate-800 backdrop-blur flex flex-row items-center gap-4 justify-between'>
-      <span className='font-bold text-4xl'>Portfolio</span>
+    <header className='sticky top-0 z-50 w-full px-4 py-2 mt-2 rounded-full backdrop-blur bg-white/80 dark:bg-slate-900/80 flex items-center justify-between'>
+      {/* BRAND */}
+      <Link href='/' className='flex items-center gap-3'>
+        {pathname === '/' ? (
+          <span className='font-bold text-2xl'>Portfolio</span>
+        ) : (
+          <>
+            <Image src='/profile_image.jpg' width={40} height={40} alt='avatar' className='rounded-full border' />
+            <div className='leading-tight'>
+              <p className='font-semibold text-sm'>Thomas</p>
+              <p className='text-xs text-gray-500'>Gonthier</p>
+            </div>
+          </>
+        )}
+      </Link>
 
       {/* NAV */}
-      <nav className='flex items-center gap-4'>
-        <Link href='/' className='px-2 py-1 rounded-full hover:bg-indigo-100 dark:hover:bg-indigo-300 hover:text-indigo-700'>
+      <nav className='flex items-center gap-4 text-sm'>
+        <Link className='hover:text-indigo-600' href='/'>
           Accueil
         </Link>
 
-        {/* DROPDOWN */}
+        {/* PROJECTS */}
         <div className='relative group'>
-          {/* bouton principal */}
-          <Link href='/projects' className='px-2 py-1 rounded-full hover:bg-indigo-100 dark:hover:bg-indigo-300 hover:text-indigo-700'>
+          <Link className='hover:text-indigo-600' href='/projects'>
             Projets ▾
           </Link>
 
-          {/* dropdown */}
-          <div className='absolute top-10 left-0 w-64 bg-white dark:bg-slate-900 shadow-lg rounded-xl p-2 flex flex-col gap-1 border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition'>
-            <Link href='/projects/tousaumarche' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-              TousAuMarché
-            </Link>
-
-            <Link href='/projects/scan-and-share' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-              Scan & Share
-            </Link>
-
-            <Link href='/projects/portfolio' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-              Portfolio
-            </Link>
+          <div className='absolute left-0 top-8 w-56 bg-background dark:bg-slate-900 border rounded-xl shadow-lg p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition'>
+            {projects.map((p) => (
+              <Link key={p.slug} href={`/projects/${p.slug}`} className='block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800'>
+                {p.name}
+              </Link>
+            ))}
           </div>
         </div>
 
-        {/* DROPDOWN COMPETENCES */}
+        {/* SKILLS */}
         <div className='relative group'>
-          {/* bouton principal */}
-          <Link href='/competences' className='px-2 py-1 rounded-full hover:bg-indigo-100 dark:hover:bg-indigo-300 hover:text-indigo-700'>
+          <Link className='hover:text-indigo-600' href='/competences'>
             Compétences ▾
           </Link>
 
-          {/* LEVEL 1 */}
-          <div className='absolute left-0 w-72 bg-white dark:bg-slate-900 shadow-lg rounded-xl p-2 flex flex-col gap-1 border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition'>
-            {/* TECHNIQUE */}
-            <div className='group/tech relative'>
-              <div className='px-3 py-2 rounded-lg flex justify-between items-center hover:bg-indigo-50 dark:hover:bg-slate-800 cursor-pointer'>
-                Techniques
-                <span>›</span>
-              </div>
+          <div className='absolute left-0 top-8 w-64 bg-background dark:bg-slate-900 border rounded-xl shadow-lg p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition'>
+            {/* TECH */}
+            <p className='px-2 py-1 text-xs font-semibold text-gray-500'>Techniques</p>
+            {techSkills.map((s) => (
+              <Link key={s.slug} href={`/competences/${s.slug}`} className='block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800'>
+                {s.name}
+              </Link>
+            ))}
 
-              <div className='absolute left-full top-0 ml-2 w-72 bg-white dark:bg-slate-900 shadow-lg rounded-xl p-2 border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover/tech:opacity-100 group-hover/tech:visible transition flex flex-col gap-1'>
-                <Link href='/competences/typescript' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-                  TypeScript
-                </Link>
+            <div className='my-2 border-t' />
 
-                <Link href='/competences/nextjs-shadcn' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-                  Next.js / Shadcn
-                </Link>
-
-                <Link href='/competences/aws-cloud' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-                  AWS / Cloud
-                </Link>
-
-                <Link href='/competences/figma' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-                  Figma
-                </Link>
-              </div>
-            </div>
-
-            {/* HUMAIN */}
-            <div className='group/human relative'>
-              <div className='px-3 py-2 rounded-lg flex justify-between items-center hover:bg-indigo-50 dark:hover:bg-slate-800 cursor-pointer'>
-                Humaines
-                <span>›</span>
-              </div>
-
-              <div className='absolute left-full top-0 ml-2 w-72 bg-white dark:bg-slate-900 shadow-lg rounded-xl p-2 border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover/human:opacity-100 group-hover/human:visible transition flex flex-col gap-1'>
-                <Link href='/competences/analyse-besoins' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-                  Analyse des besoins
-                </Link>
-
-                <Link href='/competences/relation-client' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-                  Relation client
-                </Link>
-
-                <Link href='/competences/autonomie' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-                  Autonomie
-                </Link>
-
-                <Link href='/competences/travail-equipe' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-                  Travail d’équipe
-                </Link>
-
-                <Link href='/competences/polyvalence' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-                  Polyvalence
-                </Link>
-
-                <Link href='/competences/gestion-temps' className='px-3 py-2 rounded-lg hover:bg-indigo-50 dark:hover:bg-slate-800'>
-                  Gestion du temps
-                </Link>
-              </div>
-            </div>
+            {/* HUMAN */}
+            <p className='px-2 py-1 text-xs font-semibold text-gray-500'>Humaines</p>
+            {humanSkills.map((s) => (
+              <Link key={s.slug} href={`/competences/${s.slug}`} className='block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800'>
+                {s.name}
+              </Link>
+            ))}
           </div>
         </div>
 
-        <Link href='/about' className='px-2 py-1 rounded-full hover:bg-indigo-100 dark:hover:bg-indigo-300 hover:text-indigo-700'>
+        <Link className='hover:text-indigo-600' href='/about'>
           À propos
         </Link>
       </nav>
 
       {/* THEME */}
-      {/* FIXME */}
-      <button onClick={toggleTheme} className='invisible p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'>
-        {theme === 'light' ? '🌙' : '☀️'}
+      <button onClick={toggleTheme} className='invisible px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-700 text-sm'>
+        {theme === 'dark' ? '☀️' : '🌙'}
       </button>
-    </div>
+    </header>
   );
 }

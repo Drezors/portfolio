@@ -1,6 +1,9 @@
+import ContactForm from '@/components/form/contact-form';
+import Footer from '@/components/navigation/footer';
 import Navigation from '@/components/navigation/navigation';
+import CompetencesList from '@/components/skills/skills-list';
+import CompetenceRadar from '@/components/skills/skills-radar';
 import { promises as fs } from 'fs';
-import Link from 'next/link';
 
 async function getCompetences() {
   const file = await fs.readFile(process.cwd() + '/src/app/competences.json', 'utf8');
@@ -21,38 +24,24 @@ export default async function CompetencesPage() {
   return (
     <>
       <Navigation />
-
-      <div className='max-w-6xl mx-auto px-6 py-16 flex flex-col gap-12'>
-        <h1 className='text-4xl font-bold'>Compétences</h1>
-
-        {/* TECHNIQUES */}
-        <section className='flex flex-col gap-4'>
-          <h2 className='text-2xl font-semibold'>Techniques</h2>
-
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            {techniques.map((c) => (
-              <Link key={c.slug} href={`/competences/${c.slug}`} className='border rounded-xl p-4 hover:shadow-lg transition bg-white dark:bg-slate-900'>
-                <h3 className='font-bold text-lg'>{c.title}</h3>
-                <p className='text-sm text-muted-foreground line-clamp-3 mt-2'>{c.definition}</p>
-              </Link>
-            ))}
-          </div>
+      <div className='max-w-6xl mx-auto px-6 py-16 flex flex-col gap-16'>
+        {/* INTRO */}
+        <section className='flex flex-col gap-3'>
+          <h1 className='text-4xl font-bold'>Compétences</h1>
+          <p className='text-muted-foreground max-w-2xl'>Ensemble structuré de compétences techniques et humaines construites en contexte réel. Chaque compétence est reliée à des situations concrètes et évaluée par niveau.</p>
         </section>
 
-        {/* HUMAINES */}
-        <section className='flex flex-col gap-4'>
-          <h2 className='text-2xl font-semibold'>Humaines</h2>
+        {/* COMPARAISON HUMAIN / TECH */}
+        <CompetencesList techniques={techniques} humaines={humaines} />
 
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            {humaines.map((c) => (
-              <Link key={c.slug} href={`/competences/${c.slug}`} className='border rounded-xl p-4 hover:shadow-lg transition bg-white dark:bg-slate-900'>
-                <h3 className='font-bold text-lg'>{c.title}</h3>
-                <p className='text-sm text-muted-foreground line-clamp-3 mt-2'>{c.definition}</p>
-              </Link>
-            ))}
-          </div>
+        {/* RADAR GLOBAL */}
+        <section className='flex flex-col gap-4'>
+          <h2 className='text-2xl font-semibold'>Vision globale</h2>
+          <CompetenceRadar data={list} />
         </section>
       </div>
+      <ContactForm />
+      <Footer />
     </>
   );
 }

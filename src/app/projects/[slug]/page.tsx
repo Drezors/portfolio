@@ -1,14 +1,14 @@
+import ContactForm from '@/components/form/contact-form';
+import Footer from '@/components/navigation/footer';
 import Navigation from '@/components/navigation/navigation';
+import MarkdownRenderer from '@/components/shared/markdown-renderer';
+import { Badge } from '@/components/ui/badge';
 import { promises as fs } from 'fs';
-import { ExternalLinkIcon } from 'lucide-react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import Image from 'next/image';
 
-export async function getPostBySlug(slug: string) {
+async function getPostBySlug(slug: string) {
   const projectsFile = await fs.readFile(process.cwd() + '/src/app/projects-new.json', 'utf8');
-
   const projects = JSON.parse(projectsFile);
-
   return projects[slug] || null;
 }
 
@@ -19,194 +19,106 @@ export default async function ProjectDetails({ params }: { params: { slug: strin
     return (
       <>
         <Navigation />
-        <div className='flex flex-col gap-4 items-center justify-center mt-20'>
-          <h1 className='text-4xl font-bold'>Projet introuvable</h1>
+        <div className='flex flex-col items-center justify-center mt-20'>
+          <h1 className='text-3xl font-bold'>Projet introuvable</h1>
         </div>
       </>
     );
   }
 
+  const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
+    <section className='flex flex-col gap-3'>
+      <h2 className='text-2xl font-semibold'>{title}</h2>
+      <div className='text-muted-foreground leading-relaxed'>{children}</div>
+    </section>
+  );
+
   return (
     <>
       <Navigation />
 
-      <div className='px-20 py-16 flex flex-col gap-10 container'>
-        {/* HEADER */}
-        <div className='flex flex-col gap-4'>
-          <h1 className='text-3xl font-bold'>{project.name}</h1>
+      <div className=' container mx-auto px-6 py-16 flex flex-col gap-8'>
+        {/* HERO */}
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-10 items-center'>
+          {/* LEFT */}
+          <div className='flex flex-col gap-4'>
+            <h1 className='text-4xl font-bold'>{project.name}</h1>
 
-          <div className='flex gap-2 flex-wrap'>
-            {project.technologies.map((tech) => (
-              <span key={tech} className='px-2 py-1 rounded-full bg-indigo-100 text-indigo-700 text-sm'>
-                {tech}
-              </span>
-            ))}
+            <MarkdownRenderer content={project.introduction?.split('\n')[0]} />
+
+            <div className='flex flex-wrap gap-2 pt-2'>
+              {project.technologies?.map((t: string) => (
+                <Badge variant='secondary' key={t}>
+                  {t}
+                </Badge>
+              ))}
+            </div>
           </div>
+
+          {/* RIGHT */}
+          <div className='relative w-full h-[360px]'>{project?.media.thumbnail && <Image src={project.media.thumbnail} alt={project.name} fill className='object-cover rounded-xl border' priority />}</div>
         </div>
 
-        {/* INTRO */}
+        {/* CONTENT */}
         <Section title='Présentation'>
-          <div className='prose dark:prose-invert max-w-none whitespace-pre-line'>
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                h2: ({ children }) => <h2 className='text-lg font-semibold'>{children}</h2>,
-                ul: ({ children }) => <ul className='list-disc ml-6 flex flex-col gap-0'>{children}</ul>,
-                li: ({ children }) => <li className=''>{children}</li>,
-                a: ({ href, children }) => (
-                  <a href={href} target='_blank' rel='noopener noreferrer' className='inline-flex gap-2 items-center underline text-primary'>
-                    {' '}
-                    {children} <ExternalLinkIcon size={16} className='flex-none' />{' '}
-                  </a>
-                ),
-              }}
-            >
-              {project.introduction}
-            </ReactMarkdown>
-          </div>
+          <MarkdownRenderer content={project.introduction} />
         </Section>
 
-        {/* CONTEXTE */}
-        <Section title='Contexte / enjeux / risques'>
-          <div className='prose dark:prose-invert max-w-none whitespace-pre-line'>
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                h2: ({ children }) => <h2 className='text-lg font-semibold'>{children}</h2>,
-                ul: ({ children }) => <ul className='list-disc ml-6 flex flex-col gap-0'>{children}</ul>,
-                li: ({ children }) => <li className=''>{children}</li>,
-                a: ({ href, children }) => (
-                  <a href={href} target='_blank' rel='noopener noreferrer' className='inline-flex gap-2 items-center underline text-primary'>
-                    {' '}
-                    {children} <ExternalLinkIcon size={16} className='flex-none' />{' '}
-                  </a>
-                ),
-              }}
-            >
-              {project.context}
-            </ReactMarkdown>
-          </div>
+        <Section title='Objectifs, contexte, enjeux et risques'>
+          <MarkdownRenderer content={project.context} />
         </Section>
 
-        {/* STEPS */}
         <Section title='Étapes réalisées'>
-          <div className='prose dark:prose-invert max-w-none whitespace-pre-line'>
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                h2: ({ children }) => <h2 className='text-lg font-semibold'>{children}</h2>,
-                ul: ({ children }) => <ul className='list-disc ml-6 flex flex-col gap-0'>{children}</ul>,
-                li: ({ children }) => <li className=''>{children}</li>,
-                a: ({ href, children }) => (
-                  <a href={href} target='_blank' rel='noopener noreferrer' className='inline-flex gap-2 items-center underline text-primary'>
-                    {' '}
-                    {children} <ExternalLinkIcon size={16} className='flex-none' />{' '}
-                  </a>
-                ),
-              }}
-            >
-              {project.steps}
-            </ReactMarkdown>
-          </div>
+          <MarkdownRenderer content={project.steps} />
         </Section>
 
-        {/* ACTORS */}
-        <Section title='Acteurs et interactions'>
-          <div className='prose dark:prose-invert max-w-none whitespace-pre-line'>
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                h2: ({ children }) => <h2 className='text-lg font-semibold'>{children}</h2>,
-                ul: ({ children }) => <ul className='list-disc ml-6 flex flex-col gap-0'>{children}</ul>,
-                li: ({ children }) => <li className=''>{children}</li>,
-                a: ({ href, children }) => (
-                  <a href={href} target='_blank' rel='noopener noreferrer' className='inline-flex gap-2 items-center underline text-primary'>
-                    {' '}
-                    {children} <ExternalLinkIcon size={16} className='flex-none' />{' '}
-                  </a>
-                ),
-              }}
-            >
-              {project.actors}
-            </ReactMarkdown>
-          </div>
+        <Section title='Acteurs'>
+          <MarkdownRenderer content={project.actors} />
         </Section>
 
-        {/* RESULTS */}
         <Section title='Résultats'>
-          <div className='prose dark:prose-invert max-w-none whitespace-pre-line'>
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                h2: ({ children }) => <h2 className='text-lg font-semibold'>{children}</h2>,
-                ul: ({ children }) => <ul className='list-disc ml-6 flex flex-col gap-0'>{children}</ul>,
-                li: ({ children }) => <li className=''>{children}</li>,
-                a: ({ href, children }) => (
-                  <a href={href} target='_blank' rel='noopener noreferrer' className='inline-flex gap-2 items-center underline text-primary'>
-                    {' '}
-                    {children} <ExternalLinkIcon size={16} className='flex-none' />{' '}
-                  </a>
-                ),
-              }}
-            >
-              {project.results}
-            </ReactMarkdown>
-          </div>
+          <MarkdownRenderer content={project.results} />
         </Section>
 
-        {/* FUTURE */}
-        <Section title='Suite du projet'>
-          <div className='prose dark:prose-invert max-w-none whitespace-pre-line'>
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                h2: ({ children }) => <h2 className='text-lg font-semibold'>{children}</h2>,
-                ul: ({ children }) => <ul className='list-disc ml-6 flex flex-col gap-0'>{children}</ul>,
-                li: ({ children }) => <li className=''>{children}</li>,
-                a: ({ href, children }) => (
-                  <a href={href} target='_blank' rel='noopener noreferrer' className='inline-flex gap-2 items-center underline text-primary'>
-                    {' '}
-                    {children} <ExternalLinkIcon size={16} className='flex-none' />{' '}
-                  </a>
-                ),
-              }}
-            >
-              {project.future}
-            </ReactMarkdown>
-          </div>
+        <Section title='Perspectives'>
+          <MarkdownRenderer content={project.future} />
         </Section>
 
-        {/* CRITIQUE */}
-        <Section title='Regard critique'>
-          <div className='prose dark:prose-invert max-w-none whitespace-pre-line'>
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                h2: ({ children }) => <h2 className='text-lg font-semibold'>{children}</h2>,
-                ul: ({ children }) => <ul className='list-disc ml-6 flex flex-col gap-0'>{children}</ul>,
-                li: ({ children }) => <li className=''>{children}</li>,
-                a: ({ href, children }) => (
-                  <a href={href} target='_blank' rel='noopener noreferrer' className='inline-flex gap-2 items-center underline text-primary'>
-                    {' '}
-                    {children} <ExternalLinkIcon size={16} className='flex-none' />{' '}
-                  </a>
-                ),
-              }}
-            >
-              {project.critique}
-            </ReactMarkdown>
-          </div>
+        <Section title='Analyse critique personnelle'>
+          <MarkdownRenderer content={project.critique} />
         </Section>
+
+        {/* GALERIE */}
+        {project.media?.screens?.length > 0 && (
+          <section className='flex flex-col gap-4'>
+            <h2 className='text-2xl font-semibold'>Aperçu du projet</h2>
+
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+              {project.media.screens.map((img: string) => (
+                <div key={img} className='relative w-full h-[180px]'>
+                  <Image src={img} alt='Screenshot projet' fill className='object-cover rounded-lg border' />
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* COMPETENCES */}
+        <section className='flex flex-col gap-4'>
+          <h2 className='text-2xl font-semibold'>Compétences mobilisées</h2>
+
+          <div className='flex flex-wrap gap-2'>
+            {project.competencies?.map((c: any) => (
+              <a key={c.slug} href={`/competences/${c.slug}`} className='px-3 py-1 border rounded-full text-sm hover:bg-muted transition'>
+                {c.name}
+              </a>
+            ))}
+          </div>
+        </section>
       </div>
-    </>
-  );
-}
 
-function Section({ title, children }: any) {
-  return (
-    <div className='flex flex-col gap-2'>
-      <h2 className='text-2xl font-semibold uppercase'>{title}</h2>
-      <p className='text-base leading-relaxed'>{children}</p>
-    </div>
+      <ContactForm />
+      <Footer />
+    </>
   );
 }

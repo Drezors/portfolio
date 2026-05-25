@@ -1,93 +1,74 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Project } from "../../app/project.types";
+import { motion } from 'framer-motion';
+import { ArrowRightIcon } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Badge } from '../ui/badge';
+import { Card, CardContent, CardFooter, CardHeader } from '../ui/card';
 
-type RecentProjectsProps = {
-  projects: {
-    mobile: Project[],
-    web: Project[],
-    desktop: Project[],
+type Project = {
+  slug: string;
+  name: string;
+  introduction: string;
+  technologies: string[];
+  media: {
+    thumbnail: string;
+    screens: string[];
   };
 };
 
-export default function RecentProjects({ projects }: RecentProjectsProps) {
-  // Obtien les deux derniers projets de chaque catégorie
-  const latestMobileProjects = projects.mobile.slice(0, 2);
-  const latestWebProjects = projects.web.slice(0, 2);
-  const latestDesktopProjects = projects.desktop.slice(0, 2);
+type ProjectsSectionProps = {
+  projects: Record<string, Project>;
+};
 
-  // Met les projets dans un tableau pour les afficher
-  const allProjects = [
-    ...latestMobileProjects.map((project) => ({ category: "apps", project })),
-    ...latestWebProjects.map((project) => ({ category: "web", project })),
-    ...latestDesktopProjects.map((project) => ({ category: "desktop", project })),
-  ];
-
-  // État pour le filtre actif
-  const [activeFilter, setActiveFilter] = useState("all");
-
-  // Filtrer les projets en fonction du filtre actif
-  const filteredProjects = activeFilter === "all"
-    ? allProjects
-    : allProjects.filter((item) => item.category === activeFilter);
+export default function ProjectsSection({ projects }: ProjectsSectionProps) {
+  const projectList = Object.values(projects).slice(0, 5);
 
   return (
-    <section className="px-6 md:px-32 py-12 flex flex-col gap-14 items-center md:w-4/5">
-      {/* Barre de filtre */}
-      <h2 className="col-span-6 md:col-span-12 text-3xl font-bold text-center">Mes projects récents</h2>
-      <div className="flex justify-center gap-4 p-2 w-fit bg-usual-900 rounded-full text-usual-50">
-        <button
-          className={`px-4 py-2 rounded-full ${activeFilter === "all" ? "bg-secondary-600 text-white" : "bg-transparent"}`}
-          onClick={() => setActiveFilter("all")}
-        >
-          All
-        </button>
-        <button
-          className={`px-4 py-2 rounded-full ${activeFilter === "apps" ? "bg-secondary-600 text-white" : "bg-transparent"}`}
-          onClick={() => setActiveFilter("apps")}
-        >
-          Apps
-        </button>
-        <button
-          className={`px-4 py-2 rounded-full ${activeFilter === "web" ? "bg-secondary-600 text-white" : "bg-transparent"}`}
-          onClick={() => setActiveFilter("web")}
-        >
-          Web
-        </button>
-        <button
-          className={`px-4 py-2 rounded-full ${activeFilter === "desktop" ? "bg-secondary-600 text-white" : "bg-transparent"}`}
-          onClick={() => setActiveFilter("desktop")}
-        >
-          Desktop
-        </button>
+    <section className='px-6 md:px-16 lg:px-24 py-24 flex flex-col gap-8'>
+      {/* HEADER */}
+      <div className='max-w-3xl flex flex-col gap-4'>
+        <span className='uppercase tracking-[0.3em] text-sm text-gray-500'>Réalisations</span>
+        <h2 className='text-4xl md:text-5xl font-bold leading-tight'>Des projets construits autour de vrais problèmes.</h2>
+        <p className='text-lg text-gray-600 dark:text-gray-300'>Applications web, mobile et outils métiers conçus avec une approche produit, centrée utilisateur et maintenable.</p>
       </div>
 
-      {/* Affichage des projets filtrés */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {filteredProjects.map((item, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, translateY: -50 }}
-            whileInView={{ opacity: 1, translateY: 0 }}
-            transition={{ type: "spring", damping: 20, stiffness: 100 }}
-            className="relative group overflow-hidden rounded-xl shadow-lg bg-primary-950"
-          >
-            {/* Image */}
-            <img
-              src={item.project.thumbnail}
-              alt={`${item.project.name} screenshot`}
-              className="w-full h-80 object-cover object-center rounded-lg transition-transform duration-500 group-hover:scale-105"
-            />
+      {/* PROJECTS */}
+      <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
+        {projectList.map((project, index) => (
+          <motion.div key={project.slug} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }} viewport={{ once: true }}>
+            <Link href={`/projects/${project.slug}`}>
+              <Card className='hover:-translate-y-1 hover:shadow-2xl transition duration-300 overflow-hidden'>
+                {/* IMAGE */}
+                <CardHeader className='p-0 border-b'>
+                  <div className='relative h-72 overflow-hidden'>
+                    <Image src={project?.media?.thumbnail} alt={project.name} fill className='object-cover transition duration-700 group-hover:scale-105' />
+                  </div>
+                </CardHeader>
 
-            {/* Barre de survol */}
-            <Link href={`/projects/${item.project.slug}`}>
-              <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
-                <h2 className="text-2xl font-bold text-primary-800 mb-2">{item.project.name}</h2>
-                <p className="text-primary-700 text-center">Cliquez pour plus d'informations sur le projet</p>
-              </div>
+                {/* CONTENT */}
+                <CardContent className='pt-6 flex flex-col gap-4'>
+                  <div className='flex flex-col gap-3'>
+                    <h3 className='text-2xl font-bold'>{project.name}</h3>
+                    <p className='text-gray-600 dark:text-gray-300 line-clamp-3'>{project.introduction.replace(/\*\*/g, '')}</p>
+                  </div>
+
+                  {/* TECHS */}
+                  <div className='flex flex-wrap gap-2'>
+                    {project.technologies.map((tech) => (
+                      <Badge key={tech} variant='outline'>
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+                {/* CTA */}
+                <CardFooter className='flex flex-row gap-2 items-center w-full justify-between border-t px-6 py-2'>
+                  <span className='text-sm text-gray-500'>Voir le projet</span>
+                  <ArrowRightIcon />
+                </CardFooter>
+              </Card>
             </Link>
           </motion.div>
         ))}
