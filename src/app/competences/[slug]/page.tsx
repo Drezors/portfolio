@@ -26,7 +26,7 @@ export default async function CompetencePage({ params }: { params: { slug: strin
     <>
       <Navigation />
 
-      <div className='container mx-auto flex flex-col gap-4 pb-10'>
+      <div className='max-w-6xl mx-auto flex flex-col gap-4 pb-10'>
         {/* TITLE */}
         <div className='h-[20vh] p-8 flex flex-row justify-center items-center'>
           <h1 className='font-bold text-5xl'>{competence.title}</h1>
