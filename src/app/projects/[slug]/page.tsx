@@ -7,7 +7,7 @@ import { promises as fs } from 'fs';
 import Image from 'next/image';
 
 async function getPostBySlug(slug: string) {
-  const projectsFile = await fs.readFile(process.cwd() + '/src/app/projects-new.json', 'utf8');
+  const projectsFile = await fs.readFile(process.cwd() + '../../projects-new.json', 'utf8');
   const projects = JSON.parse(projectsFile);
   return projects[slug] || null;
 }
