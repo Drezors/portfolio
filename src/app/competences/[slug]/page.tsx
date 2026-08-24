@@ -2,12 +2,10 @@ import ContactForm from '@/components/form/contact-form';
 import Footer from '@/components/navigation/footer';
 import Navigation from '@/components/navigation/navigation';
 import MarkdownRenderer from '@/components/shared/markdown-renderer';
-import { promises as fs } from 'fs';
+import competences from '@/data/competences.json';
 
-async function getCompetenceBySlug(slug: string) {
-  const file = await fs.readFile(process.cwd() + '/src/app/competences.json', 'utf8');
-  const data = JSON.parse(file);
-  return data[slug] || null;
+function getCompetenceBySlug(slug: string) {
+  return (competences as Record<string, any>)[slug] || null;
 }
 
 export default async function CompetencePage({ params }: { params: { slug: string } }) {

@@ -4,21 +4,39 @@ import Footer from '@/components/navigation/footer';
 import Navigation from '@/components/navigation/navigation';
 import RecentProjects from '@/components/projects/recent-projects';
 import SkillsSection from '@/components/SkillsSection';
-import { promises as fs } from 'fs';
+import competences from '@/data/competences.json';
+import projects from '@/data/projects-new.json';
+
+type Skill = {
+  title: string;
+  type: 'humaine' | 'technique';
+  definition: string;
+  proofs: {
+    title: string;
+    content: string;
+  }[];
+};
+
+type Project = {
+  slug: string;
+  name: string;
+  introduction: string;
+  technologies: string[];
+  media: {
+    thumbnail: string;
+  };
+};
 
 export default async function Home() {
-  const projectsFile = await fs.readFile(process.cwd() + '/src/app/projects-new.json', 'utf8');
-  const projects = JSON.parse(projectsFile);
-
-  const competencesFile = await fs.readFile(process.cwd() + '/src/app/competences.json', 'utf8');
-  const competences = JSON.parse(competencesFile);
+  const typedCompetences = competences as Record<string, Skill>;
+  const typedProjects = projects as Record<string, Project>;
 
   return (
     <>
       <Navigation />
       <HeroSection />
-      <SkillsSection skills={competences} />
-      <RecentProjects projects={projects} />
+      <SkillsSection skills={typedCompetences} />
+      <RecentProjects projects={typedProjects} />
       <ContactForm />
       <Footer />
     </>

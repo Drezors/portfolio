@@ -3,13 +3,11 @@ import Footer from '@/components/navigation/footer';
 import Navigation from '@/components/navigation/navigation';
 import MarkdownRenderer from '@/components/shared/markdown-renderer';
 import { Badge } from '@/components/ui/badge';
-import { promises as fs } from 'fs';
+import projects from '@/data/projects-new.json';
 import Image from 'next/image';
 
-async function getPostBySlug(slug: string) {
-  const projectsFile = await fs.readFile(process.cwd() + '../../projects-new.json', 'utf8');
-  const projects = JSON.parse(projectsFile);
-  return projects[slug] || null;
+function getPostBySlug(slug: string) {
+  return (projects as Record<string, any>)[slug] || null;
 }
 
 export default async function ProjectDetails({ params }: { params: { slug: string } }) {
