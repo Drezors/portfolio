@@ -24,14 +24,14 @@ export default async function CompetencesPage() {
           <p className='text-muted-foreground max-w-2xl'>Ensemble structuré de compétences techniques et humaines construites en contexte réel. Chaque compétence est reliée à des situations concrètes et évaluée par niveau.</p>
         </section>
 
-        {/* COMPARAISON HUMAIN / TECH */}
-        <CompetencesList techniques={techniques} humaines={humaines} />
-
         {/* RADAR GLOBAL */}
         <section className='flex flex-col gap-4'>
           <h2 className='text-2xl font-semibold'>Vision globale</h2>
           <CompetenceRadar data={list} />
         </section>
+
+        {/* COMPARAISON HUMAIN / TECH */}
+        <CompetencesList techniques={techniques} humaines={humaines} />
       </div>
       <ContactForm />
       <Footer />
