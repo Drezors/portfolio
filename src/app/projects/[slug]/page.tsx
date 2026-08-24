@@ -1,65 +1,124 @@
-import Navigation from "@/components/navigation/navigation";
-import { promises as fs } from "fs";
-import { Project } from "../../project.types";
-import Link from "next/link";
+import ContactForm from '@/components/form/contact-form';
+import Footer from '@/components/navigation/footer';
+import Navigation from '@/components/navigation/navigation';
+import MarkdownRenderer from '@/components/shared/markdown-renderer';
+import { Badge } from '@/components/ui/badge';
+import { promises as fs } from 'fs';
+import Image from 'next/image';
 
-// Fonction qui permet de récupéré le projet en fonction du slug répértorié.
-export async function getPostBySlug(slug: string) {
-    const projectsFile = await fs.readFile(process.cwd() + '/src/app/projects.json', 'utf8');
-    const projects = JSON.parse(projectsFile);
-    const projectsType = Object.keys(projects);
-    var project = null;
-
-    for(var i = 0; i < projectsType.length; i++) {
-        projects[projectsType[i]].map((projectToRetrieve : Project) => {
-            console.log(projectToRetrieve.slug);
-            console.log(slug);
-            console.log(projectToRetrieve.slug == slug);
-            if(projectToRetrieve.slug == slug) {
-                project = projectToRetrieve;
-            }
-        });
-    }
-    return project;
+async function getPostBySlug(slug: string) {
+  const projectsFile = await fs.readFile(process.cwd() + '/src/app/projects-new.json', 'utf8');
+  const projects = JSON.parse(projectsFile);
+  return projects[slug] || null;
 }
 
-
 export default async function ProjectDetails({ params }: { params: { slug: string } }) {
-    let project = await getPostBySlug(params.slug);
-    
-    // Affiche le projet en question (je te laisse faire le style comme tu le souhaite)
-    if(project != undefined && project != null) {
-        return(
-            <>
-                <Navigation />
-                <div className="px-8 py-20">
-                    <div className="flex flex-col gap-6">
-                        <h1 className="text-xl font-bold">{project.name}</h1>
-                        <div className="flex flex-row items-center gap-6">
-                        {project.technologies.map((technology) => 
-                            <span className="text-sm bg-indigo-100 dark:bg-indigo-200 text-indigo-700 rounded-full flex items-center justify-center px-1.5 py-1">{technology}</span>
-                        )}
-                        </div>
-                        <p>{project.description}</p>
-                        <img src={project.thumbnail} alt={`${project.name} screenshot`} className="w-full h-auto rounded-lg" />
-                    </div>
+  const project = await getPostBySlug(params.slug);
+
+  if (!project) {
+    return (
+      <>
+        <Navigation />
+        <div className='flex flex-col items-center justify-center mt-20'>
+          <h1 className='text-3xl font-bold'>Projet introuvable</h1>
+        </div>
+      </>
+    );
+  }
+
+  const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
+    <section className='flex flex-col gap-3'>
+      <h2 className='text-2xl font-semibold'>{title}</h2>
+      <div className='text-muted-foreground leading-relaxed'>{children}</div>
+    </section>
+  );
+
+  return (
+    <>
+      <Navigation />
+
+      <div className=' container mx-auto px-6 py-16 flex flex-col gap-8'>
+        {/* HERO */}
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-10 items-center'>
+          {/* LEFT */}
+          <div className='flex flex-col gap-4'>
+            <h1 className='text-4xl font-bold'>{project.name}</h1>
+
+            <MarkdownRenderer content={project.introduction?.split('\n')[0]} />
+
+            <div className='flex flex-wrap gap-2 pt-2'>
+              {project.technologies?.map((t: string) => (
+                <Badge variant='secondary' key={t}>
+                  {t}
+                </Badge>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT */}
+          <div className='relative w-full h-[360px]'>{project?.media.thumbnail && <Image src={project.media.thumbnail} alt={project.name} fill className='object-cover rounded-xl border' priority />}</div>
+        </div>
+
+        {/* CONTENT */}
+        <Section title='Présentation'>
+          <MarkdownRenderer content={project.introduction} />
+        </Section>
+
+        <Section title='Objectifs, contexte, enjeux et risques'>
+          <MarkdownRenderer content={project.context} />
+        </Section>
+
+        <Section title='Étapes réalisées'>
+          <MarkdownRenderer content={project.steps} />
+        </Section>
+
+        <Section title='Acteurs'>
+          <MarkdownRenderer content={project.actors} />
+        </Section>
+
+        <Section title='Résultats'>
+          <MarkdownRenderer content={project.results} />
+        </Section>
+
+        <Section title='Perspectives'>
+          <MarkdownRenderer content={project.future} />
+        </Section>
+
+        <Section title='Analyse critique personnelle'>
+          <MarkdownRenderer content={project.critique} />
+        </Section>
+
+        {/* GALERIE */}
+        {project.media?.screens?.length > 0 && (
+          <section className='flex flex-col gap-4'>
+            <h2 className='text-2xl font-semibold'>Aperçu du projet</h2>
+
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+              {project.media.screens.map((img: string) => (
+                <div key={img} className='relative w-full h-[180px]'>
+                  <Image src={img} alt='Screenshot projet' fill className='object-cover rounded-lg border' />
                 </div>
-            </>
-        );
-    } else {
-        return(
-            <>
-                <Navigation />
-                <div className="flex flex-col gap-4 items-center justify-center mt-20">
-                    <h1 className="text-4xl font-bold">Impossible de trouver ce projet</h1>
-                    <p className="text-lg font-semibold">Cela peut être une erreur de notre part. Mais nous vous invitons à retenter depuis la page de projet.</p>
-                    <div className="flex flex-row gap-6 items-center justify-center">
-                        <Link href="/projects" className="bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-500 dark:hover:bg-indigo-600 text-slate-50 font-bold flex items-center justify-center rounded-lg px-2.5 py-1">Retour aux projets</Link>
-                        <Link href="/" className="border border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-500 rounded-lg px-2.5 py-1 flex items-center justify-center">Retour à l'accueil</Link>
-                    </div>
-                </div>
-            </>
-        );
-    }
-    
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* COMPETENCES */}
+        <section className='flex flex-col gap-4'>
+          <h2 className='text-2xl font-semibold'>Compétences mobilisées</h2>
+
+          <div className='flex flex-wrap gap-2'>
+            {project.competencies?.map((c: any) => (
+              <a key={c.slug} href={`/competences/${c.slug}`} className='px-3 py-1 border rounded-full text-sm hover:bg-muted transition'>
+                {c.name}
+              </a>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      <ContactForm />
+      <Footer />
+    </>
+  );
 }

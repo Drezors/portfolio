@@ -18,16 +18,16 @@ export default function ProjectsGrid({projects} : ProjectsGridProps) {
             <motion.div initial={{opacity: 0, translateX: -100}} whileInView={{opacity: 1, translateX: 0}} transition={{type: "string", damping: 10, stiffness: 100}} className="col-span-4 bg-white dark:bg-slate-800 flex flex-col gap-4 justify-between w-full h-full border border-slate-100 dark:border-slate-300 shadow-sm p-4 rounded-xl">
             <div className="flex flex-col gap-4">
                 <h2 className="text-2xl font-bold">{project.name}</h2>
-                <div className="grid grid-cols-3 gap-2 items-center">
+                <div className="flex flex-row gap-6 items-center">
                     {project.technologies.map((technology) => 
-                    <span className="text-sm bg-indigo-100 dark:bg-indigo-200 text-indigo-700 rounded-full flex items-center justify-center px-1.5 py-1">{technology}</span>
+                    <span className="text-sm bg-primary-100 dark:bg-primary-200 text-primary-700 rounded-full flex items-center justify-center px-4 py-1">{technology}</span>
                     )}
                 </div>
             </div>
             <p className="font-medium">{project.description.substring(0, 100)}...</p>
             <img src={project.thumbnail} alt={`${project.name} screenshot`} className="w-full h-auto rounded-lg" />
             <div className="flex flex-row items-center justify-end">
-                <Link href={`/projects/${project.slug}`} className="px-3 py-1 rounded-xl text-lg font-bold border border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-500 flex items-center justify-center">Voir plus</Link>
+                <Link href={`/projects/${project.slug}`} className="px-3 py-1 rounded-xl text-lg font-bold border border-primary-600 dark:border-primary-500 text-primary-600 dark:text-primary-500 flex items-center justify-center">Voir plus</Link>
             </div>
         </motion.div>
             )}
