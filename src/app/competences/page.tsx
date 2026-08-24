@@ -6,7 +6,7 @@ import CompetenceRadar from '@/components/skills/skills-radar';
 import { promises as fs } from 'fs';
 
 async function getCompetences() {
-  const file = await fs.readFile(process.cwd() + '/src/app/competences.json', 'utf8');
+  const file = await fs.readFile(process.cwd() + '../../competences.json', 'utf8');
   return JSON.parse(file);
 }
 
