@@ -14,7 +14,6 @@ type Project = {
   technologies: string[];
   media: {
     thumbnail: string;
-    screens: string[];
   };
 };
 

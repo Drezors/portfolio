@@ -3,16 +3,9 @@ import Footer from '@/components/navigation/footer';
 import Navigation from '@/components/navigation/navigation';
 import CompetencesList from '@/components/skills/skills-list';
 import CompetenceRadar from '@/components/skills/skills-radar';
-import { promises as fs } from 'fs';
-
-async function getCompetences() {
-  const file = await fs.readFile(process.cwd() + '../../competences.json', 'utf8');
-  return JSON.parse(file);
-}
+import competences from '@/data/competences.json';
 
 export default async function CompetencesPage() {
-  const competences = await getCompetences();
-
   const list = Object.entries(competences).map(([slug, comp]: any) => ({
     slug,
     ...comp,
