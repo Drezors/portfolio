@@ -3,6 +3,7 @@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import { Briefcase, Calendar, ExternalLink, GraduationCap, MapPin } from 'lucide-react';
+import Link from 'next/link';
 import { useState } from 'react';
 
 interface TimelineItem {
@@ -17,8 +18,15 @@ interface TimelineItem {
   link?: string;
   details?: {
     fullDescription?: string;
-    skills?: string[];
-    achievements?: string[];
+    skills?: {
+      label: string;
+      href?: string;
+    }[];
+
+    achievements?: {
+      label: string;
+      href?: string;
+    }[];
   };
 }
 
@@ -45,13 +53,15 @@ export function Timeline({ items, className }: TimelineProps) {
 
       {/* Dialog pour les détails */}
       <Dialog open={!!selectedItem} onOpenChange={(open) => !open && setSelectedItem(null)}>
-        <DialogContent className='sm:max-w-lg'>
+        <DialogContent className='sm:max-w-lg max-h-[85vh] overflow-hidden flex flex-col'>
           {selectedItem && (
             <>
               <DialogHeader>
                 <div className='flex items-center gap-4 mb-2'>
-                  {selectedItem.logo ? (
-                    <img src={selectedItem.logo} alt={selectedItem.subtitle} className='w-12 h-12 rounded-lg object-contain bg-foreground/5 p-1' />
+                  {selectedItem.logo && selectedItem.link ? (
+                    <a href={selectedItem.link} target='_blank' rel='noopener noreferrer' aria-label={`Visiter le site de ${selectedItem.subtitle}`} onClick={(e) => e.stopPropagation()} className='block'>
+                      <img src={selectedItem.logo} alt={`Logo ${selectedItem.subtitle}`} className='w-12 h-12 rounded-lg object-contain bg-foreground/5 p-1' />
+                    </a>
                   ) : (
                     <div className={cn('w-12 h-12 rounded-lg flex items-center justify-center', selectedItem.current ? 'bg-primary text-primary-foreground' : 'bg-secondary text-foreground')}>
                       {selectedItem.type === 'education' ? <GraduationCap className='w-6 h-6' /> : <Briefcase className='w-6 h-6' />}
@@ -85,7 +95,7 @@ export function Timeline({ items, className }: TimelineProps) {
                 </DialogDescription>
               </DialogHeader>
 
-              <div className='space-y-4 pt-2'>
+              <div className='space-y-4 pt-2 overflow-y-auto'>
                 {/* Description */}
                 {(selectedItem.details?.fullDescription || selectedItem.description) && (
                   <div>
@@ -99,11 +109,17 @@ export function Timeline({ items, className }: TimelineProps) {
                   <div>
                     <h4 className='text-sm font-medium text-foreground mb-2'>Compétences</h4>
                     <div className='flex flex-wrap gap-2'>
-                      {selectedItem.details.skills.map((skill, i) => (
-                        <span key={i} className='px-2.5 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary'>
-                          {skill}
-                        </span>
-                      ))}
+                      {selectedItem.details.skills.map((skill, i) =>
+                        skill.href ? (
+                          <Link key={i} href={skill.href} onClick={() => setSelectedItem(null)} className='px-2.5 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors'>
+                            {skill.label}
+                          </Link>
+                        ) : (
+                          <span key={i} className='px-2.5 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary'>
+                            {skill.label}
+                          </span>
+                        ),
+                      )}
                     </div>
                   </div>
                 )}
@@ -116,7 +132,14 @@ export function Timeline({ items, className }: TimelineProps) {
                       {selectedItem.details.achievements.map((achievement, i) => (
                         <li key={i} className='flex items-start gap-2 text-sm text-muted-foreground'>
                           <span className='w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0' />
-                          {achievement}
+
+                          {achievement.href ? (
+                            <Link href={achievement.href} onClick={() => setSelectedItem(null)} className='hover:text-primary transition-colors underline underline-offset-4'>
+                              {achievement.label}
+                            </Link>
+                          ) : (
+                            achievement.label
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -172,7 +195,14 @@ function TimelineEntry({ item, index, onClick }: { item: TimelineItem; index: nu
           </div>
           <h3 className='mt-2 text-lg font-semibold text-foreground leading-snug text-balance'>{item.title}</h3>
           <div className={cn('mt-2 flex items-center gap-2', isLeft && 'md:flex-row-reverse')}>
-            {item.logo && <img src={item.logo} alt={item.subtitle} className='w-6 h-6 rounded object-contain bg-foreground/10 p-0.5' />}
+            {item.logo &&
+              (item.link ? (
+                <a href={item.link} target='_blank' rel='noopener noreferrer' aria-label={`Visiter le site de ${item.subtitle}`} onClick={(e) => e.stopPropagation()} className='block'>
+                  <img src={item.logo} alt={`Logo ${item.subtitle}`} className='h-6 w-6' />
+                </a>
+              ) : (
+                <img src={item.logo} alt={`Logo ${item.subtitle}`} className='h-6 w-6' />
+              ))}
             <p className='text-sm font-medium text-muted-foreground'>{item.subtitle}</p>
           </div>
           <p className='mt-1 text-xs text-muted-foreground/70'>{item.location}</p>
